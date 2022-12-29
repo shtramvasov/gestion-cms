@@ -27,7 +27,6 @@
 		"indent": ["error", "tab"],
 		"react/react-in-jsx-scope": "off",
 		"no-console": "warn",
-		"linebreak-style": ["error", "unix"],
 		"quotes": ["error", "single"],
 		"semi": ["error", "never"],
 		"max-len": ["error", { "code": 120 }]
