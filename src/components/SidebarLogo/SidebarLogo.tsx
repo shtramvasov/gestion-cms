@@ -1,7 +1,9 @@
 import { FC } from 'react'
+import LogoIcon from '@assets/images/logo-black.svg'
+import styles from './SidebarLogo.module.scss'
 
 const SidebarLogo: FC = () => {
-	return <div>SidebarLogo</div>
+	return <img className={styles.logo} src={LogoIcon} alt='Gestion' />
 }
 
 export default SidebarLogo
