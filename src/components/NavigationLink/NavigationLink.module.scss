@@ -1,0 +1,7 @@
+.link {
+	@apply flex items-center gap-2 text-lg py-2 px-5 transition-all;
+
+	&:hover {
+		@apply bg-gray-200 rounded-lg;
+	}
+}

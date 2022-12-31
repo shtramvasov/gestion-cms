@@ -1,3 +1,7 @@
 .main {
-  @apply flex flex-wrap
+	@apply flex w-full min-h-screen;
+}
+
+.wrapper {
+	@apply flex flex-wrap pt-16 pl-12 w-full;
 }

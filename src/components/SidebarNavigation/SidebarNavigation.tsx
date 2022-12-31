@@ -4,17 +4,15 @@ import { ISidebarNavigation } from './SidebarNavigation.interface'
 import styles from './SidebarNavigation.module.scss'
 
 interface INavigationMenu {
-  links: ISidebarNavigation[]
+	links: ISidebarNavigation[]
 }
 
 const SidebarNavigation: FC<INavigationMenu> = ({ links }) => {
 	return (
 		<nav className={styles.nav}>
-			<ul>
-				{links.map(link => (
-					<NavigationLink item={link} key={link.link} />
-				))}
-			</ul>
+			{links.map(link => (
+				<NavigationLink item={link} key={link.link} />
+			))}
 		</nav>
 	)
 }

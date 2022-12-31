@@ -1,0 +1,15 @@
+.container {
+	@apply flex flex-col items-center gap-2 pt-24 md:pt-16;
+
+	> h3 {
+		@apply font-semibold text-xl;
+	}
+
+	> span {
+		@apply text-stone-400;
+	}
+}
+
+.avatar {
+	@apply object-cover rounded-full w-36 h-36;
+}
