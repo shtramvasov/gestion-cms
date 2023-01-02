@@ -1,13 +1,13 @@
 import { ISidebarNavigation } from './SidebarNavigation.interface'
-import { HiChartBar, HiUsers } from 'react-icons/hi'
+import { HiUsers, HiHome } from 'react-icons/hi'
+import { HiChatBubbleOvalLeft } from 'react-icons/hi2'
 import { RiSettings4Fill } from 'react-icons/ri'
-import { IoChatboxEllipses } from 'react-icons/io5'
 
 export const NavigationData: ISidebarNavigation[] = [
 	{
 		title: 'Главная',
 		link: '/',
-		icon: HiChartBar,
+		icon: HiHome,
 	},
 	{
 		title: 'Сотрудники',
@@ -17,7 +17,7 @@ export const NavigationData: ISidebarNavigation[] = [
 	{
 		title: 'Сообщения',
 		link: '/chat',
-		icon: IoChatboxEllipses,
+		icon: HiChatBubbleOvalLeft,
 	},
 	{
 		title: 'Настройки',

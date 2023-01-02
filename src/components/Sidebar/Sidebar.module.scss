@@ -1,3 +1,6 @@
 .sidebar {
-	@apply flex flex-wrap flex-col pt-12 w-72 items-center bg-slate-50 text-slate-800;
+	@apply flex justify-between md:justify-start items-center
+    px-5 py-4 md:px-0 md:flex-col md:pt-12 
+    w-screen md:w-72 
+  bg-slate-50 text-gray-800 dark:bg-gest-slate-700 dark:text-slate-50;
 }
