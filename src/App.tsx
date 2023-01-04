@@ -1,11 +1,17 @@
 import { FC } from 'react'
 import { RouterProvider } from 'react-router-dom'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { router } from './routes'
+
+const theme = extendTheme({
+	fonts: {
+		body: 'Source Sans Pro',
+	},
+})
 
 const App: FC = () => {
 	return (
-		<ChakraProvider>
+		<ChakraProvider theme={theme}>
 			<RouterProvider router={router} />
 		</ChakraProvider>
 	)
