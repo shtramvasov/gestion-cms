@@ -11,7 +11,7 @@ const theme = extendTheme({
 
 const App: FC = () => {
 	return (
-		<ChakraProvider theme={theme}>
+		<ChakraProvider theme={theme} resetCSS={false}>
 			<RouterProvider router={router} />
 		</ChakraProvider>
 	)
