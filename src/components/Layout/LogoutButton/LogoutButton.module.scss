@@ -1,0 +1,12 @@
+.logout {
+	@apply order-5 hidden md:flex p-3 cursor-pointer transition
+  rounded-xl text-xl items-center gap-1.5 bg-slate-200 text-slate-700 dark:text-slate-50 dark:bg-gest-slate-800;
+
+	span {
+		@apply text-base;
+	}
+
+	&:hover {
+		@apply bg-slate-300 text-slate-600 dark:bg-gest-slate-600 dark:text-slate-100;
+	}
+}

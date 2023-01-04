@@ -6,11 +6,11 @@ import styles from './DarkModeToggle.module.scss'
 import { useDarkMode } from '@hooks/useDarkMode'
 
 const DarkModeToggle: FC = () => {
-	const { toggle, isDarkMode } = useDarkMode()
+	const { toggle, theme } = useDarkMode()
 	return (
 		<div className={styles.container}>
 			<HiSun />
-			<Switch isChecked={isDarkMode} size='md' onChange={toggle} />
+			<Switch isChecked={theme == 'dark'} size='md' onChange={toggle} />
 			<MdDarkMode />
 		</div>
 	)

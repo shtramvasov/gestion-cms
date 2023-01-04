@@ -2,7 +2,7 @@
 	@apply flex order-3 md:order-2 justify-between md:flex-col items-center gap-1.5 ;
 
 	&.sidebar {
-		@apply md:pt-6 lg:pt-8 2xl:pt-20;
+		@apply md:py-1 2xl:py-10;
 	}
 
 	.avatar {
