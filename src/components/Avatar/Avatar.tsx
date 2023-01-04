@@ -10,7 +10,9 @@ interface IAvatarVariants {
 
 const Avatar: FC<IAvatarVariants> = ({ size, sidebar }) => {
 	return (
-		<div className={styles.container}>
+		<div
+			className={classnames(styles.container, { [styles.sidebar]: sidebar })}
+		>
 			<img
 				className={classnames(styles.avatar, {
 					[styles.md]: size == 'md',

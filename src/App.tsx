@@ -1,11 +1,14 @@
 import { FC } from 'react'
 import { RouterProvider } from 'react-router-dom'
+import { ChakraProvider } from '@chakra-ui/react'
 import { router } from './routes'
-import { useDarkMode } from '@hooks/useDarkMode'
 
 const App: FC = () => {
-	useDarkMode()
-	return <RouterProvider router={router} />
+	return (
+		<ChakraProvider>
+			<RouterProvider router={router} />
+		</ChakraProvider>
+	)
 }
 
 export default App
