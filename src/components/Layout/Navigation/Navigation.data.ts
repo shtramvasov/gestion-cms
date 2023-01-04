@@ -1,7 +1,6 @@
-import { ISidebarNavigation } from './SidebarNavigation.interface'
-import { HiUsers, HiHome } from 'react-icons/hi'
+import { ISidebarNavigation } from './Navigation.interface'
+import { HiUsers, HiHome, HiCog } from 'react-icons/hi'
 import { HiChatBubbleOvalLeft } from 'react-icons/hi2'
-import { RiSettings4Fill } from 'react-icons/ri'
 
 export const NavigationData: ISidebarNavigation[] = [
 	{
@@ -22,6 +21,6 @@ export const NavigationData: ISidebarNavigation[] = [
 	{
 		title: 'Настройки',
 		link: '/settings',
-		icon: RiSettings4Fill,
+		icon: HiCog,
 	},
 ]

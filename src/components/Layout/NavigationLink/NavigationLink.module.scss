@@ -1,0 +1,11 @@
+.link {
+	@apply flex list-none items-center md:gap-2 text-xl md:text-lg py-2 px-2 md:px-5 transition-all;
+
+	&:hover {
+		@apply text-blue-400;
+	}
+}
+
+.title {
+	@apply hidden md:inline;
+}

@@ -1,7 +1,7 @@
-import NavigationLink from '@components/NavigationLink/NavigationLink'
+import NavigationLink from '@components/Layout/NavigationLink/NavigationLink'
 import { FC } from 'react'
-import { ISidebarNavigation } from './SidebarNavigation.interface'
-import styles from './SidebarNavigation.module.scss'
+import { ISidebarNavigation } from './Navigation.interface'
+import styles from './Navigation.module.scss'
 
 interface INavigationMenu {
 	links: ISidebarNavigation[]

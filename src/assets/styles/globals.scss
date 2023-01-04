@@ -18,6 +18,12 @@ body {
 	font-size: 16px;
 }
 
-.active {
-	@apply bg-slate-300 text-gray-900 rounded-md;
+@layer components {
+	.active {
+		@apply bg-sky-600 text-slate-50 rounded-md;
+
+		&:hover {
+			@apply text-slate-50;
+		}
+	}
 }
