@@ -1,3 +1,4 @@
 .logo {
-	@apply order-1 object-cover h-8 md:h-10;
+	@apply order-1 object-cover h-8 md:h-12 w-36 
+  bg-[url('/src/assets/images/logo-black.svg')] dark:bg-[url('/src/assets/images/logo.svg')] bg-no-repeat bg-center;
 }
