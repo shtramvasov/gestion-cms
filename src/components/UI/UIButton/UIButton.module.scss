@@ -1,6 +1,6 @@
 .button {
-	@apply px-3 py-2 flex items-center gap-2 cursor-pointer rounded-md transition 
-  bg-slate-200 text-slate-700 dark:text-slate-50 dark:bg-gest-slate-800;
+	@apply px-8 py-2 flex items-center gap-2 cursor-pointer rounded-md transition duration-500 
+  bg-slate-200 text-slate-800 dark:text-slate-50 dark:bg-gest-slate-800;
 
 	&:hover {
 		@apply bg-slate-300 text-slate-600 dark:bg-gest-slate-600 dark:text-slate-100;
@@ -8,44 +8,52 @@
 }
 
 .secondary {
-	@apply bg-gest-slate-800 text-slate-50 dark:bg-slate-200 dark:text-slate-700;
+	@apply bg-gray-700 text-slate-50 dark:bg-slate-300 dark:text-slate-700;
 
 	&:hover {
-		@apply bg-gest-slate-600 text-slate-100 dark:bg-slate-300 dark:text-slate-600;
+		@apply bg-gray-800 text-slate-50 dark:bg-slate-100 dark:text-slate-700;
 	}
 }
 .success {
-	@apply bg-gest-accent-green text-slate-50 dark:bg-emerald-600;
+	@apply bg-gest-accent-green-300 text-gest-accent-green-400 dark:bg-gest-accent-green-300 dark:text-gest-accent-green-400;
 
 	&:hover {
-		@apply bg-emerald-500 text-slate-50 dark:bg-emerald-500;
-	}
-}
-.danger {
-	@apply bg-rose-400 text-slate-50 dark:bg-rose-500;
-
-	&:hover {
-		@apply bg-rose-500 text-slate-50 dark:bg-rose-400;
+		@apply bg-gest-accent-green-500 dark:bg-gest-accent-green-500;
 	}
 }
 .warning {
-	@apply bg-yellow-400 text-slate-50 dark:bg-gest-accent-lemon;
+	@apply bg-gest-accent-lemon-300 text-gest-accent-lemon-400 dark:bg-gest-accent-lemon-300 dark:text-gest-accent-lemon-400;
 
 	&:hover {
-		@apply bg-yellow-500 text-slate-50 dark:bg-yellow-400;
+		@apply bg-gest-accent-lemon-500 dark:bg-gest-accent-lemon-500;
+	}
+}
+.danger {
+	@apply bg-gest-accent-rose-300 text-gest-accent-rose-400 dark:bg-gest-accent-rose-300 dark:text-gest-accent-rose-400;
+
+	&:hover {
+		@apply bg-gest-accent-rose-500 dark:bg-gest-accent-rose-500;
 	}
 }
 .accent {
-	@apply bg-gest-accent-blue text-slate-50 dark:bg-sky-600;
+	@apply bg-gest-accent-blue-300 text-gest-accent-blue-400 dark:bg-gest-accent-blue-300 dark:text-gest-accent-blue-400;
 
 	&:hover {
-		@apply bg-sky-500 text-slate-50 dark:bg-sky-500;
+		@apply bg-gest-accent-blue-400 dark:bg-gest-accent-blue-400;
 	}
 }
+
 .rounded {
 	@apply rounded-full p-2;
 }
 
 .large {
 	@apply p-4 text-lg;
+}
+
+.success,
+.danger,
+.accent,
+.warning {
+	@apply font-semibold hover:text-slate-50;
 }

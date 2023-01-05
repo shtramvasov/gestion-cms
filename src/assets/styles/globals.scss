@@ -27,7 +27,7 @@ body {
 
 @layer components {
 	.active {
-		@apply bg-sky-600 text-slate-50 rounded-md;
+		@apply bg-gest-accent-blue-500 text-slate-50 rounded-md;
 
 		&:hover {
 			@apply text-slate-50;
