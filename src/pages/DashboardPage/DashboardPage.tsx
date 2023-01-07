@@ -8,6 +8,7 @@ const DashboardPage: FC = () => {
 		<Layout>
 			<div className={styles.container}>
 				<TasksSection />
+				<div className={styles.second}>Второй блок</div>
 			</div>
 		</Layout>
 	)
