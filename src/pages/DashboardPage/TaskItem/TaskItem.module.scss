@@ -9,7 +9,7 @@ text-gray-800 dark:text-slate-100
 	}
 
 	&.pinned {
-		@apply lg:p-4 gap-2 bg-slate-200 border-slate-300 dark:border-none dark:bg-gest-slate-600;
+		@apply lg:p-4 gap-1 bg-slate-200 border-slate-300 dark:border-none dark:bg-gest-slate-600;
 
 		h2 {
 			@apply text-xl;
@@ -29,7 +29,7 @@ text-gray-800 dark:text-slate-100
 	}
 
 	&.pinned {
-		@apply justify-end flex-row-reverse gap-3 pt-3;
+		@apply justify-end flex-row-reverse gap-3 pt-2;
 
 		p {
 			@apply pl-0 border-none;
@@ -39,4 +39,16 @@ text-gray-800 dark:text-slate-100
 
 .overlap {
 	@apply border-2 rounded-full border-white dark:border-gest-slate-700;
+}
+
+.author {
+	@apply flex gap-3 items-center lg:pt-12;
+
+	p {
+		@apply text-slate-400 dark:text-stone-400 text-sm;
+
+    span {
+      @apply font-semibold text-gest-accent-blue-400 dark:text-gest-accent-indigo
+    }
+	}
 }

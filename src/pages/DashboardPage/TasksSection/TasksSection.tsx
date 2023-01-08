@@ -14,7 +14,7 @@ const TasksSection: FC = () => {
 					<HiPlus />
 				</UIButton>
 			</div>
-			<TaskItem pinned/>
+			<TaskItem />
 		</section>
 	)
 }
