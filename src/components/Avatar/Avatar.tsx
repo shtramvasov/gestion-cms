@@ -5,13 +5,16 @@ import avatar from '@assets/images/avatar.jpg'
 
 interface IAvatarVariants {
 	size: 'sm' | 'md' | 'lg'
+  className?: string | undefined
 	sidebar?: boolean
 }
 
-const Avatar: FC<IAvatarVariants> = ({ size, sidebar }) => {
+const Avatar: FC<IAvatarVariants> = ({ size, className, sidebar }) => {
 	return (
 		<div
-			className={classnames(styles.container, { [styles.sidebar]: sidebar })}
+			className={classnames(styles.container, className, {
+				[styles.sidebar]: sidebar,
+			})}
 		>
 			<img
 				className={classnames(styles.avatar, {

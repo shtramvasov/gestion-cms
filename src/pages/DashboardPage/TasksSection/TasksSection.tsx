@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Heading from '@components/Heading/Heading'
-import Task from '@components/Task/Task'
+import TaskItem from '@pages/DashboardPage/TaskItem/TaskItem'
 import UIButton from '@components/UI/UIButton/UIButton'
 import styles from './TasksSection.module.scss'
 import { HiPlus } from 'react-icons/hi'
@@ -14,7 +14,7 @@ const TasksSection: FC = () => {
 					<HiPlus />
 				</UIButton>
 			</div>
-			<Task />
+			<TaskItem pinned/>
 		</section>
 	)
 }
