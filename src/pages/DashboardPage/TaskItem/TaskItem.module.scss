@@ -18,6 +18,10 @@ text-gray-800 dark:text-slate-100
 
 	.date {
 		@apply text-gray-500 dark:text-stone-400;
+
+		span {
+			@apply py-1 px-2 rounded-md mr-1 bg-slate-300 dark:bg-gest-slate-700;
+		}
 	}
 }
 
@@ -47,8 +51,8 @@ text-gray-800 dark:text-slate-100
 	p {
 		@apply text-slate-400 dark:text-stone-400 text-sm;
 
-    span {
-      @apply font-semibold text-gest-accent-blue-400 dark:text-gest-accent-indigo
-    }
+		span {
+			@apply font-semibold text-gest-accent-blue-400 dark:text-gest-accent-indigo;
+		}
 	}
 }
