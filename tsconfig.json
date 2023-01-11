@@ -23,7 +23,6 @@
 			"@assets/*": ["assets/*"],
 			"@services/*": ["services/*"],
 			"@hooks/*": ["hooks/*"],
-			// "@types/*": ["types/*"],
 			"@interfaces/*": ["interfaces/*"],
 			"@store/*": ["store/*"]
 		}

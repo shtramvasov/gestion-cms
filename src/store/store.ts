@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import tasksReducer from './tasksSlice'
+import { setupListeners } from '@reduxjs/toolkit/dist/query'
+import { firebaseApi } from './api/firebaseApi'
 
 export const store = configureStore({
 	reducer: {
-		tasks: tasksReducer,
+		[firebaseApi.reducerPath]: firebaseApi.reducer,
 	},
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware({}).concat(firebaseApi.middleware),
 })
+
+setupListeners(store.dispatch)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
