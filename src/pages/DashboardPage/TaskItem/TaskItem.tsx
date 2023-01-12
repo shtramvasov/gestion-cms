@@ -2,48 +2,44 @@ import Avatar from '@components/Avatar/Avatar'
 import { FC } from 'react'
 import styles from './TaskItem.module.scss'
 import classnames from 'classnames'
+import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
+import { ITask } from '@interfaces/ITask'
 
-interface ITask {
+interface IProps {
 	pinned?: boolean
+	data: ITask | undefined
 }
 
-const TaskItem: FC<ITask> = ({ pinned }) => {
+const TaskItem: FC<IProps> = ({ pinned, data }) => {
+	const description = data?.description.replaceAll('\\n', '\n\n')
+	const createdAt = dayjs(data?.createdAt).locale('ru').format('D MMMM YYYY')
+
 	return (
 		<div className={classnames(styles.container, { [styles.pinned]: pinned })}>
 			{pinned ? (
 				<p className={styles.date}>
-					<span>Закреплено</span> 12 января, 2023
+					<span>Закреплено</span> {createdAt}
 				</p>
 			) : null}
-			<h2>Заголовок поставленной задачи</h2>
+			<h2>{data?.title}</h2>
 			<div className={classnames(styles.team, { [styles.pinned]: pinned })}>
 				<div className='flex gap-1 -space-x-4'>
+					{/* #TODO: map real users */}
 					<Avatar className={styles.overlap} size='sm' />
 					<Avatar className={styles.overlap} size='sm' />
 					<Avatar className={styles.overlap} size='sm' />
 				</div>
-				<p>Короткое описание</p>
+				<p>{data?.tag}</p>
 			</div>
 			{!pinned ? (
 				<>
-					<p>
-						Описание и подробные детали поставленной задачи, которые описаны в
-						этом блоке. Возможно с вариантом показа в укороченной версии.
-					</p>
-					<p>
-						Описание и подробные детали поставленной задачи, которые описаны в
-						этом блоке. Возможно с вариантом показа в укороченной версии.
-						Описание и подробные детали поставленной задачи, которые описаны в
-						этом блоке. Возможно с вариантом показа в укороченной версии.
-					</p>
-					<p>
-						Описание и подробные детали поставленной задачи, которые описаны в
-						этом блоке. Возможно с вариантом показа в укороченной версии.
-					</p>
+					<p className='whitespace-pre-line'>{description}</p>
 					<div className={styles.author}>
 						<p>
-							Добавлено менеджером <span>Jonathan Name</span>
+							Добавлено: <span>{data?.author}</span>
 						</p>
+						{/* #TODO: map real users */}
 						<Avatar size='sm' />
 					</div>
 				</>

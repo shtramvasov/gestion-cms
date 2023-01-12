@@ -14,7 +14,9 @@ export const tasksApi = firebaseApi.injectEndpoints({
 					querySnapshot?.forEach(doc => {
 						tasks.push({ id: doc.id, ...doc.data() } as ITask)
 					})
-					return { data: tasks }
+					return {
+						data: tasks.sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
+					}
 				} catch (error: any) {
 					return error.message
 				}
