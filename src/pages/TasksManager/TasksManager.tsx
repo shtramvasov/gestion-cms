@@ -3,6 +3,7 @@ import Heading from '@components/Heading/Heading'
 import UIButton from '@components/UI/UIButton/UIButton'
 import styles from './TasksManager.module.scss'
 import { HiOutlineDotsHorizontal, HiOutlineViewGridAdd } from 'react-icons/hi'
+import UIModal from '@components/UI/UIModal/UIModal'
 
 const TasksManager: FC = () => {
 	return (
@@ -14,6 +15,7 @@ const TasksManager: FC = () => {
 			<UIButton className='justify-center bg-slate-300'>
 				<HiOutlineViewGridAdd /> Добавить новую задачу
 			</UIButton>
+			<UIModal><p>Тест</p></UIModal>
 		</div>
 	)
 }
