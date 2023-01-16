@@ -1,34 +1,72 @@
 import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+} from 'firebase/auth'
 import UIInput from '@components/UI/UIInput/UIInput'
 import UIButton from '@components/UI/UIButton/UIButton'
 import Logo from '@components/Logo/Logo'
-import styles from './AuthPage.module.scss'
 import { validateEmail } from '@utils/validateEmail'
+import { useAppDispatch } from '@hooks/useTypedReduxHooks'
+import { useAuth } from '@hooks/useAuth'
+import { setAuthUser } from '@store/slices/authUserSlice'
+import styles from './AuthPage.module.scss'
 
 const AuthPage: FC = () => {
 	interface IUserData {
 		email: string
-		password: string | number
+		password: string
 	}
+	const dispatch = useAppDispatch()
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm<IUserData>()
 
-	const [isReg, setIdReg] = useState(false)
+	const { isAuth } = useAuth()
+	const [isReg, setIdReg] = useState(isAuth)
 
 	const onSubmit: SubmitHandler<IUserData> = data => {
-		console.log(data.email, data.password)
+		const auth = getAuth()
+		if (isReg) {
+			signInWithEmailAndPassword(auth, data.email, data.password)
+				.then(({ user }) => {
+					dispatch(
+						setAuthUser({
+							email: user.email,
+							id: user.uid,
+							token: user.refreshToken,
+						}),
+					)
+				})
+				.catch(console.error)
+		} else {
+			createUserWithEmailAndPassword(auth, data.email, data.password)
+				.then(({ user }) => {
+					dispatch(
+						setAuthUser({
+							email: user.email,
+							id: user.uid,
+							token: user.refreshToken,
+						}),
+					)
+				})
+				.catch(console.error)
+		}
+
+		reset()
 	}
 
 	return (
 		<section className={styles.wrapper}>
 			<Logo />
-			<h1>{isReg ? 'Войдите в систему' : 'Добро пожаловать!'}</h1>
+			<h1>{isReg ? 'Добро пожаловать!' : 'Впервые с нами?'}</h1>
 			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 				<UIInput
 					placeholder='Почта'
@@ -46,7 +84,7 @@ const AuthPage: FC = () => {
 					error={errors.password}
 					{...register('password', {
 						required: 'Введите пароль',
-						minLength: { value: 4, message: 'Пароль не менее 4 символов' },
+						minLength: { value: 6, message: 'Пароль не менее 6 символов' },
 					})}
 				/>
 				<UIButton large secondary className='justify-center'>
