@@ -6,7 +6,7 @@ import styles from './TasksSection.module.scss'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import { HiPlus } from 'react-icons/hi'
-import { useFetchTasksQuery } from '@store/tasksSlice'
+import { useFetchTasksQuery } from '@store/slices/tasksSlice'
 
 const TasksSection: FC = () => {
 	const { data } = useFetchTasksQuery()
