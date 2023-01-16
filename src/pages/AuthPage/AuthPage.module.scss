@@ -19,13 +19,5 @@
 }
 
 .form {
-	@apply flex flex-col order-3 w-full pt-3 md:w-96 gap-2;
-}
-
-.submit {
-	@apply justify-center bg-gray-700 text-slate-50 dark:bg-slate-300 dark:text-slate-700;
-
-	&:hover {
-		@apply bg-gray-800 text-slate-50 dark:bg-slate-100 dark:text-slate-700;
-	}
+	@apply flex flex-col order-3 w-full pt-3 md:w-96 gap-5;
 }
