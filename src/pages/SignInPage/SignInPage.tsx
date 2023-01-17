@@ -1,21 +1,17 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import {
-	getAuth,
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
-} from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import UIInput from '@components/UI/UIInput/UIInput'
 import UIButton from '@components/UI/UIButton/UIButton'
 import Logo from '@components/Logo/Logo'
 import { validateEmail } from '@utils/validateEmail'
 import { useAppDispatch } from '@hooks/useTypedReduxHooks'
-import { useAuth } from '@hooks/useAuth'
+// import { useAuth } from '@hooks/useAuth'
 import { setAuthUser } from '@store/slices/authUserSlice'
-import styles from './AuthPage.module.scss'
+import styles from './SignInPage.module.scss'
 
-const AuthPage: FC = () => {
+const SignInPage: FC = () => {
 	interface IUserData {
 		email: string
 		password: string
@@ -29,44 +25,29 @@ const AuthPage: FC = () => {
 		reset,
 	} = useForm<IUserData>()
 
-	const { isAuth } = useAuth()
-	const [isReg, setIdReg] = useState(isAuth)
+	// const { isAuth } = useAuth()
 
 	const onSubmit: SubmitHandler<IUserData> = data => {
 		const auth = getAuth()
-		if (isReg) {
-			signInWithEmailAndPassword(auth, data.email, data.password)
-				.then(({ user }) => {
-					dispatch(
-						setAuthUser({
-							email: user.email,
-							id: user.uid,
-							token: user.refreshToken,
-						}),
-					)
-				})
-				.catch(console.error)
-		} else {
-			createUserWithEmailAndPassword(auth, data.email, data.password)
-				.then(({ user }) => {
-					dispatch(
-						setAuthUser({
-							email: user.email,
-							id: user.uid,
-							token: user.refreshToken,
-						}),
-					)
-				})
-				.catch(console.error)
-		}
 
+		signInWithEmailAndPassword(auth, data.email, data.password)
+			.then(({ user }) => {
+				dispatch(
+					setAuthUser({
+						email: user.email,
+						id: user.uid,
+						token: user.refreshToken,
+					}),
+				)
+			})
+			.catch(console.error)
 		reset()
 	}
 
 	return (
 		<section className={styles.wrapper}>
 			<Logo />
-			<h1>{isReg ? 'Добро пожаловать!' : 'Впервые с нами?'}</h1>
+			<h1>Добро пожаловать!</h1>
 			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 				<UIInput
 					placeholder='Почта'
@@ -87,14 +68,14 @@ const AuthPage: FC = () => {
 						minLength: { value: 6, message: 'Пароль не менее 6 символов' },
 					})}
 				/>
-				<UIButton large secondary className='justify-center'>
-					{isReg ? 'Войти' : 'Зарегистрироваться'}
+				<UIButton large secondary>
+					Войти
 				</UIButton>
 			</form>
 			<footer className={styles.footer}>
-				<p onClick={() => setIdReg(!isReg)}>
-					{isReg ? 'Нет аккаунта?' : 'Я зарегестрирован'}
-				</p>
+				<Link to={'/signup'}>
+					<p>Нет аккаунта?</p>
+				</Link>
 				<Link to={'/'}>
 					<p>Вернуться на главную</p>
 				</Link>
@@ -103,4 +84,4 @@ const AuthPage: FC = () => {
 	)
 }
 
-export default AuthPage
+export default SignInPage

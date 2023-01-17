@@ -8,7 +8,8 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 		<main className={styles.main}>
 			<Sidebar />
 			<section className={styles.wrapper}>
-				<Link to={'/auth'} className='text-indigo-600'>Регистрация</Link>
+				<Link to={'/signin'} className='text-indigo-600'>Войти в аккаунт</Link>
+				<Link to={'/signup'} className='text-indigo-600'>Регистрация</Link>
 				{children}
 			</section>
 		</main>

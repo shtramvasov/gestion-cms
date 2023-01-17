@@ -16,10 +16,10 @@ const TasksManager: FC = () => {
 	return (
 		<div className={styles.container}>
 			<Heading text='Остальные задачи' />
-			<UIButton onClick={onOpen} className='justify-center bg-slate-300'>
+			<UIButton onClick={onOpen} className='bg-slate-300'>
 				<HiOutlineDotsHorizontal /> Посмотреть все задачи
 			</UIButton>
-			<UIButton className='justify-center bg-slate-300'>
+			<UIButton className='bg-slate-300'>
 				<HiOutlineViewGridAdd /> Добавить новую задачу
 			</UIButton>
 			<Modal isOpen={isOpen} onClose={onClose}>

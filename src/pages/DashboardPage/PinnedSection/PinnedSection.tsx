@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Heading from '@components/Heading/Heading'
 import TaskItem from '@pages/DashboardPage/TaskItem/TaskItem'
 import styles from './PinnedSection.module.scss'
-import TasksManager from '@pages/TasksManager/TasksManager'
+import TasksManager from '@pages/DashboardPage/TasksManager/TasksManager'
 import { useFetchTasksQuery } from '@store/slices/tasksSlice'
 
 const PinnedSection: FC = () => {
