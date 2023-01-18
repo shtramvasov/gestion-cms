@@ -6,17 +6,22 @@ import UIInput from '@components/UI/UIInput/UIInput'
 import UIButton from '@components/UI/UIButton/UIButton'
 import Logo from '@components/Logo/Logo'
 import { validateEmail } from '@utils/validateEmail'
-import { useAppDispatch } from '@hooks/useTypedReduxHooks'
+// import { useAppDispatch } from '@hooks/useTypedReduxHooks'
 // import { useAuth } from '@hooks/useAuth'
-import { setAuthUser } from '@store/slices/authUserSlice'
+// import { setAuthUser } from '@store/slices/authUserSlice'
+import { IUser } from '@interfaces/IUser'
 import styles from '@pages/SignInPage/SignInPage.module.scss'
 
+// temporary
+import { collection, addDoc } from 'firebase/firestore'
+import { database } from '@store/api/firebase'
+
 const SignUpPage: FC = () => {
-	interface IUserData {
-		email: string
+	interface IUserData extends IUser {
 		password: string
 	}
-	const dispatch = useAppDispatch()
+	// const dispatch = useAppDispatch()
+	const usersdb = collection(database, 'users')
 
 	const {
 		register,
@@ -32,13 +37,18 @@ const SignUpPage: FC = () => {
 
 		createUserWithEmailAndPassword(auth, data.email, data.password)
 			.then(({ user }) => {
-				dispatch(
-					setAuthUser({
-						email: user.email,
-						id: user.uid,
-						token: user.refreshToken,
-					}),
-				)
+				addDoc(usersdb, {
+					email: user.email,
+					name: data.name,
+					uid: user.uid,
+				})
+				// dispatch(
+				// 	setAuthUser({
+				// 		email: user.email,
+				// 		id: user.uid,
+				// 		token: user.refreshToken,
+				// 	}),
+				// )
 			})
 			.catch(console.error)
 		reset()
@@ -66,6 +76,13 @@ const SignUpPage: FC = () => {
 					{...register('password', {
 						required: 'Введите пароль',
 						minLength: { value: 6, message: 'Пароль не менее 6 символов' },
+					})}
+				/>
+				<UIInput
+					placeholder='Имя'
+					error={errors.name}
+					{...register('name', {
+						required: 'Введите ваше имя',
 					})}
 				/>
 				<UIButton large secondary>
