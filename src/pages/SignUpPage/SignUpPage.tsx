@@ -33,25 +33,26 @@ const SignUpPage: FC = () => {
 	// const { isAuth } = useAuth()
 
 	const onSubmit: SubmitHandler<IUserData> = data => {
-		const auth = getAuth()
+		console.log(data)
+		// const auth = getAuth()
 
-		createUserWithEmailAndPassword(auth, data.email, data.password)
-			.then(({ user }) => {
-				addDoc(usersdb, {
-					email: user.email,
-					name: data.name,
-					uid: user.uid,
-				})
-				// dispatch(
-				// 	setAuthUser({
-				// 		email: user.email,
-				// 		id: user.uid,
-				// 		token: user.refreshToken,
-				// 	}),
-				// )
-			})
-			.catch(console.error)
-		reset()
+		// createUserWithEmailAndPassword(auth, data.email, data.password)
+		// 	.then(({ user }) => {
+		// 		addDoc(usersdb, {
+		// 			email: user.email,
+		// 			name: data.name,
+		// 			uid: user.uid,
+		// 		})
+		// 		// dispatch(
+		// 		// 	setAuthUser({
+		// 		// 		email: user.email,
+		// 		// 		id: user.uid,
+		// 		// 		token: user.refreshToken,
+		// 		// 	}),
+		// 		// )
+		// 	})
+		// 	.catch(console.error)
+		// reset()
 	}
 
 	return (
@@ -61,6 +62,7 @@ const SignUpPage: FC = () => {
 			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 				<UIInput
 					placeholder='Почта'
+					type='email'
 					error={errors.email}
 					{...register('email', {
 						required: 'Введите почту',
@@ -85,6 +87,23 @@ const SignUpPage: FC = () => {
 						required: 'Введите ваше имя',
 					})}
 				/>
+				<div className='flex justify-center gap-5'>
+					<UIInput
+						type='radio'
+						label='Менеджер'
+						value='Менеджер'
+						error={errors.position}
+						{...register('position', {
+							required: 'Выберите должность',
+						})}
+					/>
+					<UIInput
+						type='radio'
+						label='Рабочий'
+						value='Рабочий'
+						{...register('position')}
+					/>
+				</div>
 				<UIButton large secondary>
 					Зарегистрироваться
 				</UIButton>

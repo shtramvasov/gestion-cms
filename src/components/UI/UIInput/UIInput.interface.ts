@@ -3,6 +3,7 @@ import { FieldError } from 'react-hook-form'
 
 export interface IInputProps {
 	error?: FieldError | undefined
+  label?: string
 }
 
 type TypeInputProps = InputHTMLAttributes<HTMLInputElement> & IInputProps

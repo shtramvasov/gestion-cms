@@ -4,10 +4,17 @@ import classnames from 'classnames'
 import styles from './UIInput.module.scss'
 
 const UIInput: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
-	({ error, type = 'text', className, ...rest }, ref) => {
+	({ error, label, type = 'text', className, ...rest }, ref) => {
 		return (
 			<div className={classnames(styles.input, className)}>
-				<input ref={ref} type={type} {...rest} />
+				{label ? (
+					<label>
+						<input ref={ref} type={type} {...rest} />
+						{label}
+					</label>
+				) : (
+					<input ref={ref} type={type} {...rest} />
+				)}
 				{error && <div className={styles.error}>{error.message}</div>}
 			</div>
 		)
