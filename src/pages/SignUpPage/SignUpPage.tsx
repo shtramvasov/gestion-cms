@@ -104,6 +104,7 @@ const SignUpPage: FC = () => {
 						{...register('position')}
 					/>
 				</div>
+				<UIInput type='file' {...register('photoUrl')} />
 				<UIButton large secondary>
 					Зарегистрироваться
 				</UIButton>
