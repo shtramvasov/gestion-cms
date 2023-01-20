@@ -15,13 +15,16 @@ import styles from '@pages/SignInPage/SignInPage.module.scss'
 // temporary
 import { collection, addDoc } from 'firebase/firestore'
 import { database } from '@store/api/firebase'
+import { getStorage, getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 
 const SignUpPage: FC = () => {
 	interface IUserData extends IUser {
 		password: string
+		file: FileList
 	}
 	// const dispatch = useAppDispatch()
 	const usersdb = collection(database, 'users')
+	const storage = getStorage()
 
 	const {
 		register,
@@ -32,17 +35,28 @@ const SignUpPage: FC = () => {
 
 	// const { isAuth } = useAuth()
 
-	const onSubmit: SubmitHandler<IUserData> = data => {
-		console.log(data)
-		// const auth = getAuth()
+	const onSubmit: SubmitHandler<IUserData> = async data => {
+		const auth = getAuth()
+		const imageName = data.file[0].name
+		const imageRef = ref(storage, imageName)
 
-		// createUserWithEmailAndPassword(auth, data.email, data.password)
-		// 	.then(({ user }) => {
-		// 		addDoc(usersdb, {
-		// 			email: user.email,
-		// 			name: data.name,
-		// 			uid: user.uid,
-		// 		})
+		await uploadBytes(imageRef, data.file[0])
+		await getDownloadURL(imageRef).then(url => (data.photoUrl = url))
+		// console.log(data.photoUrl)
+		// console.log(data)
+
+		createUserWithEmailAndPassword(auth, data.email, data.password).then(
+			({ user }) => {
+				addDoc(usersdb, {
+					email: user.email,
+					name: data.name,
+					uid: user.uid,
+					position: data.position,
+					photoUrl: data.photoUrl,
+				})
+			},
+		)
+
 		// 		// dispatch(
 		// 		// 	setAuthUser({
 		// 		// 		email: user.email,
@@ -51,8 +65,8 @@ const SignUpPage: FC = () => {
 		// 		// 	}),
 		// 		// )
 		// 	})
-		// 	.catch(console.error)
-		// reset()
+
+		reset()
 	}
 
 	return (
@@ -104,7 +118,12 @@ const SignUpPage: FC = () => {
 						{...register('position')}
 					/>
 				</div>
-				<UIInput type='file' {...register('photoUrl')} />
+				<UIInput
+					type='file'
+					accept='.png, .jpg, .jpeg'
+					required
+					{...register('file')}
+				/>
 				<UIButton large secondary>
 					Зарегистрироваться
 				</UIButton>
