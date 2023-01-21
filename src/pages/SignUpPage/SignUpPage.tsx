@@ -9,22 +9,19 @@ import { validateEmail } from '@utils/validateEmail'
 // import { useAppDispatch } from '@hooks/useTypedReduxHooks'
 // import { useAuth } from '@hooks/useAuth'
 // import { setAuthUser } from '@store/slices/authUserSlice'
-import { IUser } from '@interfaces/IUser'
+import { IUserData } from '@interfaces/IUserData'
 import styles from '@pages/SignInPage/SignInPage.module.scss'
 
 // temporary
-import { collection, addDoc } from 'firebase/firestore'
-import { database } from '@store/api/firebase'
 import { getStorage, getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 
+//redux test
+import { useAddUserMutation } from '@store/slices/usersSlice'
+
 const SignUpPage: FC = () => {
-	interface IUserData extends IUser {
-		password: string
-		file: FileList
-	}
 	// const dispatch = useAppDispatch()
-	const usersdb = collection(database, 'users')
 	const storage = getStorage()
+	const [addUser] = useAddUserMutation()
 
 	const {
 		register,
@@ -33,8 +30,6 @@ const SignUpPage: FC = () => {
 		reset,
 	} = useForm<IUserData>()
 
-	// const { isAuth } = useAuth()
-
 	const onSubmit: SubmitHandler<IUserData> = async data => {
 		const auth = getAuth()
 		const imageName = data.file[0].name
@@ -42,21 +37,12 @@ const SignUpPage: FC = () => {
 
 		await uploadBytes(imageRef, data.file[0])
 		await getDownloadURL(imageRef).then(url => (data.photoUrl = url))
-		// console.log(data.photoUrl)
-		// console.log(data)
 
-		createUserWithEmailAndPassword(auth, data.email, data.password).then(
-			({ user }) => {
-				addDoc(usersdb, {
-					email: user.email,
-					name: data.name,
-					uid: user.uid,
-					position: data.position,
-					photoUrl: data.photoUrl,
-				})
-			},
+		await createUserWithEmailAndPassword(auth, data.email, data.password).then(
+			({ user }) => (data.uid = user.uid),
 		)
-
+		addUser(data)
+		reset()
 		// 		// dispatch(
 		// 		// 	setAuthUser({
 		// 		// 		email: user.email,
@@ -65,8 +51,6 @@ const SignUpPage: FC = () => {
 		// 		// 	}),
 		// 		// )
 		// 	})
-
-		reset()
 	}
 
 	return (
@@ -139,5 +123,4 @@ const SignUpPage: FC = () => {
 		</section>
 	)
 }
-
 export default SignUpPage
