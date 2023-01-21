@@ -2,6 +2,6 @@ export interface IUser {
 	uid: string
 	email: string
 	name: string
-  position: string
-  photoUrl: string
+	position: 'Менеджер' | 'Рабочий'
+	photoUrl: string
 }

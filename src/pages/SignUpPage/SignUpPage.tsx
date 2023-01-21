@@ -1,26 +1,17 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import Logo from '@components/Logo/Logo'
+import SignFooter from './SignFooter'
 import UIInput from '@components/UI/UIInput/UIInput'
 import UIButton from '@components/UI/UIButton/UIButton'
-import Logo from '@components/Logo/Logo'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { validateEmail } from '@utils/validateEmail'
-// import { useAppDispatch } from '@hooks/useTypedReduxHooks'
-// import { useAuth } from '@hooks/useAuth'
-// import { setAuthUser } from '@store/slices/authUserSlice'
+import { uploadImage } from '@services/uploadImage'
 import { IUserData } from '@interfaces/IUserData'
+import { useAddUserMutation } from '@store/slices/usersSlice'
 import styles from '@pages/SignInPage/SignInPage.module.scss'
 
-// temporary
-import { getStorage, getDownloadURL, ref, uploadBytes } from 'firebase/storage'
-
-//redux test
-import { useAddUserMutation } from '@store/slices/usersSlice'
-
 const SignUpPage: FC = () => {
-	// const dispatch = useAppDispatch()
-	const storage = getStorage()
 	const [addUser] = useAddUserMutation()
 
 	const {
@@ -32,26 +23,28 @@ const SignUpPage: FC = () => {
 
 	const onSubmit: SubmitHandler<IUserData> = async data => {
 		const auth = getAuth()
-		const imageName = data.file[0].name
-		const imageRef = ref(storage, imageName)
 
-		await uploadBytes(imageRef, data.file[0])
-		await getDownloadURL(imageRef).then(url => (data.photoUrl = url))
+		await uploadImage(data.file).then(url => (data.photoUrl = url))
 
-		await createUserWithEmailAndPassword(auth, data.email, data.password).then(
-			({ user }) => (data.uid = user.uid),
-		)
-		addUser(data)
+		await createUserWithEmailAndPassword(auth, data.email, data.password)
+			.then(({ user }) => (data.uid = user.uid))
+			.then(() => addUser(data))
+
 		reset()
-		// 		// dispatch(
-		// 		// 	setAuthUser({
-		// 		// 		email: user.email,
-		// 		// 		id: user.uid,
-		// 		// 		token: user.refreshToken,
-		// 		// 	}),
-		// 		// )
-		// 	})
 	}
+
+	// const dispatch = useAppDispatch()
+	// import { useAppDispatch } from '@hooks/useTypedReduxHooks'
+	// import { useAuth } from '@hooks/useAuth'
+	// import { setAuthUser } from '@store/slices/authUserSlice'
+	// 		// dispatch(
+	// 		// 	setAuthUser({
+	// 		// 		email: user.email,
+	// 		// 		id: user.uid,
+	// 		// 		token: user.refreshToken,
+	// 		// 	}),
+	// 		// )
+	// 	})
 
 	return (
 		<section className={styles.wrapper}>
@@ -112,14 +105,7 @@ const SignUpPage: FC = () => {
 					Зарегистрироваться
 				</UIButton>
 			</form>
-			<footer className={styles.footer}>
-				<Link to={'/signin'}>
-					<p>Я зарегестрирован</p>
-				</Link>
-				<Link to={'/'}>
-					<p>Вернуться на главную</p>
-				</Link>
-			</footer>
+			<SignFooter className={styles.footer} isSigningUp />
 		</section>
 	)
 }

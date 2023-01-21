@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import UIInput from '@components/UI/UIInput/UIInput'
@@ -7,9 +6,10 @@ import UIButton from '@components/UI/UIButton/UIButton'
 import Logo from '@components/Logo/Logo'
 import { validateEmail } from '@utils/validateEmail'
 import { useAppDispatch } from '@hooks/useTypedReduxHooks'
-// import { useAuth } from '@hooks/useAuth'
+
 import { setAuthUser } from '@store/slices/authUserSlice'
 import styles from './SignInPage.module.scss'
+import SignFooter from '@pages/SignUpPage/SignFooter'
 
 const SignInPage: FC = () => {
 	interface IUserData {
@@ -25,6 +25,7 @@ const SignInPage: FC = () => {
 		reset,
 	} = useForm<IUserData>()
 
+	// import { useAuth } from '@hooks/useAuth'
 	// const { isAuth } = useAuth()
 
 	const onSubmit: SubmitHandler<IUserData> = data => {
@@ -72,14 +73,7 @@ const SignInPage: FC = () => {
 					Войти
 				</UIButton>
 			</form>
-			<footer className={styles.footer}>
-				<Link to={'/signup'}>
-					<p>Нет аккаунта?</p>
-				</Link>
-				<Link to={'/'}>
-					<p>Вернуться на главную</p>
-				</Link>
-			</footer>
+			<SignFooter className={styles.footer} isSigningUp={false} />
 		</section>
 	)
 }
