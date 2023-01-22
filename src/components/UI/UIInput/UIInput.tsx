@@ -8,7 +8,7 @@ const UIInput: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
 		return (
 			<div className={classnames(styles.input, className)}>
 				{label ? (
-					<label>
+					<label className={styles.radio}>
 						<input ref={ref} type={type} {...rest} />
 						{label}
 					</label>

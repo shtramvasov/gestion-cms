@@ -1,15 +1,14 @@
 import { FC } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import Logo from '@components/Logo/Logo'
+import SignFooter from '@pages/SignUpPage/SignFooter'
 import UIInput from '@components/UI/UIInput/UIInput'
 import UIButton from '@components/UI/UIButton/UIButton'
-import Logo from '@components/Logo/Logo'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { validateEmail } from '@utils/validateEmail'
-import { useAppDispatch } from '@hooks/useTypedReduxHooks'
-
 import { setAuthUser } from '@store/slices/authUserSlice'
+import { useAppDispatch } from '@hooks/useTypedReduxHooks'
 import styles from './SignInPage.module.scss'
-import SignFooter from '@pages/SignUpPage/SignFooter'
 
 const SignInPage: FC = () => {
 	interface IUserData {
@@ -24,9 +23,6 @@ const SignInPage: FC = () => {
 		formState: { errors },
 		reset,
 	} = useForm<IUserData>()
-
-	// import { useAuth } from '@hooks/useAuth'
-	// const { isAuth } = useAuth()
 
 	const onSubmit: SubmitHandler<IUserData> = data => {
 		const auth = getAuth()
@@ -52,6 +48,7 @@ const SignInPage: FC = () => {
 			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 				<UIInput
 					placeholder='Почта'
+					type='email'
 					error={errors.email}
 					{...register('email', {
 						required: 'Введите почту',

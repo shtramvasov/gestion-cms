@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface IInitialState {
 	email: null | string
 	token: null | string
-	id: null | string | number
+	id: null | string
 }
 
 const initialState: IInitialState = {

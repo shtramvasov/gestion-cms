@@ -78,7 +78,7 @@ const SignUpPage: FC = () => {
 						required: 'Введите ваше имя',
 					})}
 				/>
-				<div className='flex justify-center gap-5'>
+				<div className='flex justify-center gap-5 '>
 					<UIInput
 						type='radio'
 						label='Менеджер'
