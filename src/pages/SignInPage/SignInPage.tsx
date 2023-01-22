@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Logo from '@components/Logo/Logo'
 import SignFooter from '@pages/SignUpPage/SignFooter'
 import UIInput from '@components/UI/UIInput/UIInput'
@@ -8,6 +9,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { validateEmail } from '@utils/validateEmail'
 import { setAuthUser } from '@store/slices/authUserSlice'
 import { useAppDispatch } from '@hooks/useTypedReduxHooks'
+import { toast } from 'react-toastify'
 import styles from './SignInPage.module.scss'
 
 const SignInPage: FC = () => {
@@ -16,6 +18,7 @@ const SignInPage: FC = () => {
 		password: string
 	}
 	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
 
 	const {
 		register,
@@ -33,11 +36,12 @@ const SignInPage: FC = () => {
 					setAuthUser({
 						email: user.email,
 						id: user.uid,
-						token: user.refreshToken,
 					}),
 				)
 			})
-			.catch(console.error)
+			.then(() => toast.success('Добро пожаловать!'))
+			.then(() => navigate('/'))
+			.catch(() => toast.error('Такого пользователя не существует'))
 		reset()
 	}
 

@@ -34,3 +34,15 @@ body {
 		}
 	}
 }
+
+.Toastify__toast {
+	@apply text-sm;
+}
+
+.Toastify__toast--error {
+	@apply bg-rose-50 text-gest-accent-rose-500;
+}
+
+.Toastify__toast--success {
+	@apply bg-green-50 text-gest-accent-green-500;
+}

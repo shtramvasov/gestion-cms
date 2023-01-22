@@ -17,14 +17,12 @@ import {
 const persistConfig = {
 	key: 'root',
 	storage,
-	// blacklist: [firebaseApi.reducer],
 }
 const persistedReducer = persistReducer(persistConfig, authUserSlice)
 
 export const store = configureStore({
 	reducer: {
 		[firebaseApi.reducerPath]: firebaseApi.reducer,
-		// auth: authUserSlice,
 		persistedReducer,
 	},
 	middleware: getDefaultMiddleware =>

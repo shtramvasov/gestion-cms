@@ -1,4 +1,5 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Logo from '@components/Logo/Logo'
 import SignFooter from './SignFooter'
 import UIInput from '@components/UI/UIInput/UIInput'
@@ -9,10 +10,16 @@ import { validateEmail } from '@utils/validateEmail'
 import { uploadImage } from '@services/uploadImage'
 import { IUserData } from '@interfaces/IUserData'
 import { useAddUserMutation } from '@store/slices/usersSlice'
+import { setAuthUser } from '@store/slices/authUserSlice'
+import { useAppDispatch } from '@hooks/useTypedReduxHooks'
+import { toast } from 'react-toastify'
 import styles from '@pages/SignInPage/SignInPage.module.scss'
 
 const SignUpPage: FC = () => {
+	const [isLoading, setIsLoading] = useState(false)
 	const [addUser] = useAddUserMutation()
+	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
 
 	const {
 		register,
@@ -23,28 +30,26 @@ const SignUpPage: FC = () => {
 
 	const onSubmit: SubmitHandler<IUserData> = async data => {
 		const auth = getAuth()
+		setIsLoading(true)
 
 		await uploadImage(data.file).then(url => (data.photoUrl = url))
 
 		await createUserWithEmailAndPassword(auth, data.email, data.password)
 			.then(({ user }) => (data.uid = user.uid))
 			.then(() => addUser(data))
+			.then(() => toast.success('Добро пожаловать!'))
+			.then(() => navigate('/'))
+			.catch(() => toast.error('Такой пользователь уже существует'))
+			.finally(() => setIsLoading(false))
 
+		await dispatch(
+			setAuthUser({
+				email: data.email,
+				id: data.uid,
+			}),
+		)
 		reset()
 	}
-
-	// const dispatch = useAppDispatch()
-	// import { useAppDispatch } from '@hooks/useTypedReduxHooks'
-	// import { useAuth } from '@hooks/useAuth'
-	// import { setAuthUser } from '@store/slices/authUserSlice'
-	// 		// dispatch(
-	// 		// 	setAuthUser({
-	// 		// 		email: user.email,
-	// 		// 		id: user.uid,
-	// 		// 		token: user.refreshToken,
-	// 		// 	}),
-	// 		// )
-	// 	})
 
 	return (
 		<section className={styles.wrapper}>
@@ -102,7 +107,7 @@ const SignUpPage: FC = () => {
 					{...register('file')}
 				/>
 				<UIButton large secondary>
-					Зарегистрироваться
+					{isLoading ? 'Отправка на сервер...' : 'Зарегистрироваться'}
 				</UIButton>
 			</form>
 			<SignFooter className={styles.footer} isSigningUp />
