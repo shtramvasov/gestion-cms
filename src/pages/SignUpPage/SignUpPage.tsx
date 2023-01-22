@@ -32,22 +32,30 @@ const SignUpPage: FC = () => {
 		const auth = getAuth()
 		setIsLoading(true)
 
-		await uploadImage(data.file).then(url => (data.photoUrl = url))
+		try {
+			await createUserWithEmailAndPassword(
+				auth,
+				data.email,
+				data.password,
+			).then(({ user }) => (data.uid = user.uid))
 
-		await createUserWithEmailAndPassword(auth, data.email, data.password)
-			.then(({ user }) => (data.uid = user.uid))
-			.then(() => addUser(data))
-			.then(() => toast.success('Добро пожаловать!'))
-			.then(() => navigate('/'))
-			.catch(() => toast.error('Такой пользователь уже существует'))
-			.finally(() => setIsLoading(false))
+			await uploadImage(data.file).then(url => (data.photoUrl = url))
 
-		await dispatch(
-			setAuthUser({
-				email: data.email,
-				id: data.uid,
-			}),
-		)
+			addUser(data)
+
+			await dispatch(
+				setAuthUser({
+					email: data.email,
+					id: data.uid,
+				}),
+			)
+			toast.success('Добро пожаловать!')
+			navigate('/')
+		} catch (error: any) {
+			toast.error('Такой пользователь уже существует')
+		} finally {
+			setIsLoading(false)
+		}
 		reset()
 	}
 
