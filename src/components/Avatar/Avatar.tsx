@@ -2,17 +2,16 @@ import { FC } from 'react'
 import { useFetchUserQuery } from '@store/slices/usersSlice'
 import styles from './Avatar.module.scss'
 import classnames from 'classnames'
-import avatar from '@assets/images/avatar.jpg' //#TODO remove later
 
 interface IAvatarVariants {
-	uid: string | null
+	uid: string | undefined
 	size: 'sm' | 'md' | 'lg'
 	className?: string | undefined
 	sidebar?: boolean
 }
 
 const Avatar: FC<IAvatarVariants> = ({ uid, size, className, sidebar }) => {
-	const { data } = useFetchUserQuery(uid)
+	const { data, isFetching } = useFetchUserQuery(uid)
 
 	return (
 		<div
@@ -20,15 +19,20 @@ const Avatar: FC<IAvatarVariants> = ({ uid, size, className, sidebar }) => {
 				[styles.sidebar]: sidebar,
 			})}
 		>
-			<img
-				className={classnames(styles.avatar, {
-					[styles.md]: size == 'md',
-					[styles.lg]: size == 'lg',
-				})}
-				src={data ? data?.photoUrl : avatar} //#TODO change later
-				alt={data?.name}
-				draggable={false}
-			/>
+			{isFetching ? (
+				<p>Loading</p> //#TODO loader
+			) : (
+				<img
+					className={classnames(styles.avatar, {
+						[styles.md]: size == 'md',
+						[styles.lg]: size == 'lg',
+					})}
+					src={data?.photoUrl}
+					alt={data?.name}
+					draggable={false}
+				/>
+			)}
+
 			{sidebar ? (
 				<div className={styles.text}>
 					<h3>{data?.name}</h3>

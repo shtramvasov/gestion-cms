@@ -25,10 +25,9 @@ const TaskItem: FC<IProps> = ({ pinned, data }) => {
 			<h2>{data?.title}</h2>
 			<div className={classnames(styles.team, { [styles.pinned]: pinned })}>
 				<div className='flex gap-1 -space-x-4'>
-					{/* #TODO: map real users */}
-					<Avatar className={styles.overlap} size='sm' />
-					<Avatar className={styles.overlap} size='sm' />
-					<Avatar className={styles.overlap} size='sm' />
+					{data?.taggedUsers.map(uid => (
+						<Avatar key={uid} uid={uid} className={styles.overlap} size='sm' />
+					))}
 				</div>
 				<p>{data?.tag}</p>
 			</div>
@@ -37,10 +36,9 @@ const TaskItem: FC<IProps> = ({ pinned, data }) => {
 					<p className='whitespace-pre-line'>{description}</p>
 					<div className={styles.author}>
 						<p>
-							Добавлено: <span>{data?.author}</span>
+							Добавлено: <span>{data?.author.name}</span>
 						</p>
-						{/* #TODO: map real users */}
-						<Avatar size='sm' />
+						<Avatar uid={data?.author.uid} size='sm' />
 					</div>
 				</>
 			) : null}
