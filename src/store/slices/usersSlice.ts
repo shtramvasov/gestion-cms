@@ -1,6 +1,6 @@
 import { firebaseApi } from '@store/api/firebaseApi'
 import { database } from '@store/api/firebase'
-import { addDoc, collection, getDocs } from 'firebase/firestore'
+import { collection, doc, getDocs, getDoc, setDoc } from 'firebase/firestore'
 import { IUser } from '@interfaces/IUser'
 
 const usersdb = collection(database, 'users')
@@ -24,10 +24,23 @@ export const usersApi = firebaseApi.injectEndpoints({
 			},
 			providesTags: ['Users'],
 		}),
+		fetchUser: builder.query<IUser, any>({
+			async queryFn(uid) {
+				try {
+					const userRef = doc(database, 'users', uid)
+					const responce = await getDoc(userRef)
+					return { data: responce.data() }
+				} catch (error: any) {
+					return error.message
+				}
+			},
+			providesTags: ['Users'],
+		}),
 		addUser: builder.mutation<null, IUser>({
 			async queryFn(data) {
 				try {
-					await addDoc(usersdb, {
+					const userRef = doc(database, 'users', data.uid)
+					await setDoc(userRef, {
 						email: data.email,
 						name: data.name,
 						uid: data.uid,
@@ -44,4 +57,5 @@ export const usersApi = firebaseApi.injectEndpoints({
 	}),
 })
 
-export const { useFetchUsersQuery, useAddUserMutation } = usersApi
+export const { useFetchUsersQuery, useFetchUserQuery, useAddUserMutation } =
+	usersApi

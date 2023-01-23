@@ -16,7 +16,6 @@ import { useDarkMode } from '@hooks/useDarkMode'
 import { toast } from 'react-toastify'
 import styles from '@pages/SignInPage/SignInPage.module.scss'
 
-
 const SignUpPage: FC = () => {
 	useDarkMode()
 	const [isLoading, setIsLoading] = useState(false)

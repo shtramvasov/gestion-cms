@@ -1,15 +1,19 @@
 import { FC } from 'react'
+import { useFetchUserQuery } from '@store/slices/usersSlice'
 import styles from './Avatar.module.scss'
 import classnames from 'classnames'
-import avatar from '@assets/images/avatar.jpg'
+import avatar from '@assets/images/avatar.jpg' //#TODO remove later
 
 interface IAvatarVariants {
+	uid: string | null
 	size: 'sm' | 'md' | 'lg'
-  className?: string | undefined
+	className?: string | undefined
 	sidebar?: boolean
 }
 
-const Avatar: FC<IAvatarVariants> = ({ size, className, sidebar }) => {
+const Avatar: FC<IAvatarVariants> = ({ uid, size, className, sidebar }) => {
+	const { data } = useFetchUserQuery(uid)
+
 	return (
 		<div
 			className={classnames(styles.container, className, {
@@ -21,14 +25,14 @@ const Avatar: FC<IAvatarVariants> = ({ size, className, sidebar }) => {
 					[styles.md]: size == 'md',
 					[styles.lg]: size == 'lg',
 				})}
-				src={avatar}
-				alt='Jonathan Name'
+				src={data ? data?.photoUrl : avatar} //#TODO change later
+				alt={data?.name}
 				draggable={false}
 			/>
 			{sidebar ? (
 				<div className={styles.text}>
-					<h3>Jonathan Name</h3>
-					<span>Менеджер</span>
+					<h3>{data?.name}</h3>
+					<span>{data?.position}</span>
 				</div>
 			) : null}
 		</div>
