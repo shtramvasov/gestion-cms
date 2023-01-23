@@ -10,7 +10,7 @@ const Heading: FC<IHeading> = ({ text, date }) => {
 	return (
 		<div className={styles.container}>
 			<h3>{text}</h3>
-			{date ? <p>{date}</p> : null}
+			{date && <p>{date}</p>}
 		</div>
 	)
 }

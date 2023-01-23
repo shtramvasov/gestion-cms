@@ -1,10 +1,11 @@
 import Avatar from '@components/Avatar/Avatar'
 import { FC } from 'react'
+import UILoader from '@components/UI/UILoader/UILoader'
+import { ITask } from '@interfaces/ITask'
 import styles from './TaskItem.module.scss'
 import classnames from 'classnames'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
-import { ITask } from '@interfaces/ITask'
 
 interface IProps {
 	pinned?: boolean
@@ -17,11 +18,11 @@ const TaskItem: FC<IProps> = ({ pinned, data }) => {
 
 	return (
 		<div className={classnames(styles.container, { [styles.pinned]: pinned })}>
-			{pinned ? (
+			{pinned && (
 				<p className={styles.date}>
 					<span>Закреплено</span> {createdAt}
 				</p>
-			) : null}
+			)}
 			<h2>{data?.title}</h2>
 			<div className={classnames(styles.team, { [styles.pinned]: pinned })}>
 				<div className='flex gap-1 -space-x-4'>
@@ -31,17 +32,17 @@ const TaskItem: FC<IProps> = ({ pinned, data }) => {
 				</div>
 				<p>{data?.tag}</p>
 			</div>
-			{!pinned ? (
+			{!pinned && (
 				<>
 					<p className='whitespace-pre-line'>{description}</p>
 					<div className={styles.author}>
 						<p>
 							Добавлено: <span>{data?.author.name}</span>
 						</p>
-						<Avatar uid={data?.author.uid} size='sm' />
+						{data ? <Avatar uid={data?.author.uid} size='sm' /> : <UILoader />}
 					</div>
 				</>
-			) : null}
+			)}
 		</div>
 	)
 }

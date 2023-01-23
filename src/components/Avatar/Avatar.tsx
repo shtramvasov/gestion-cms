@@ -1,10 +1,11 @@
 import { FC } from 'react'
 import { useFetchUserQuery } from '@store/slices/usersSlice'
+import UILoader from '@components/UI/UILoader/UILoader'
 import styles from './Avatar.module.scss'
 import classnames from 'classnames'
 
 interface IAvatarVariants {
-	uid: string | undefined
+	uid: string | undefined | null
 	size: 'sm' | 'md' | 'lg'
 	className?: string | undefined
 	sidebar?: boolean
@@ -20,7 +21,7 @@ const Avatar: FC<IAvatarVariants> = ({ uid, size, className, sidebar }) => {
 			})}
 		>
 			{isFetching ? (
-				<p>Loading</p> //#TODO loader
+				<UILoader />
 			) : (
 				<img
 					className={classnames(styles.avatar, {
