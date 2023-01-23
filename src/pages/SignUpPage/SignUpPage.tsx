@@ -12,10 +12,13 @@ import { IUserData } from '@interfaces/IUserData'
 import { useAddUserMutation } from '@store/slices/usersSlice'
 import { setAuthUser } from '@store/slices/authUserSlice'
 import { useAppDispatch } from '@hooks/useTypedReduxHooks'
+import { useDarkMode } from '@hooks/useDarkMode'
 import { toast } from 'react-toastify'
 import styles from '@pages/SignInPage/SignInPage.module.scss'
 
+
 const SignUpPage: FC = () => {
+	useDarkMode()
 	const [isLoading, setIsLoading] = useState(false)
 	const [addUser] = useAddUserMutation()
 	const dispatch = useAppDispatch()

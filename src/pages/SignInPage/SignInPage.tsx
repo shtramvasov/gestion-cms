@@ -9,10 +9,12 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { validateEmail } from '@utils/validateEmail'
 import { setAuthUser } from '@store/slices/authUserSlice'
 import { useAppDispatch } from '@hooks/useTypedReduxHooks'
+import { useDarkMode } from '@hooks/useDarkMode'
 import { toast } from 'react-toastify'
 import styles from './SignInPage.module.scss'
 
 const SignInPage: FC = () => {
+	useDarkMode()
 	interface IUserData {
 		email: string
 		password: string
