@@ -1,6 +1,9 @@
 .container {
-	@apply hidden md:flex items-center 
-  order-4 gap-1.5 p-3 
-  rounded-xl text-xl 
-bg-slate-200 text-slate-700 dark:text-slate-50 dark:bg-gest-slate-800;
+	@apply hidden md:flex cursor-pointer items-center order-4 text-2xl rounded-xl transition duration-500 py-2.5 px-5
+ bg-slate-200 text-slate-700 dark:text-slate-50 dark:bg-gest-slate-800;
+
+ &:hover {
+  @apply bg-slate-300 dark:bg-gest-slate-600
+ }
 }
+

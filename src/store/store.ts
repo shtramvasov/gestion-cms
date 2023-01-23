@@ -6,7 +6,6 @@ import authUserSlice from './slices/authUserSlice'
 import settingsSlice from './slices/settingsSlice'
 import {
 	persistStore,
-	persistReducer,
 	persistCombineReducers,
 	FLUSH,
 	REHYDRATE,

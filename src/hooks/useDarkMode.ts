@@ -14,5 +14,8 @@ export const useDarkMode = () => {
 		theme == 'dark' ? root.classList.add('dark') : root.classList.remove('dark')
 	})
 
-	return { theme, toggle: () => dispatch(setTheme({ theme: mode })) }
+	return {
+		theme,
+		toggle: () => dispatch(setTheme({ theme: mode })),
+	}
 }
