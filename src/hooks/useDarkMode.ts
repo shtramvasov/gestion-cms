@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useAppSelector, useAppDispatch } from '@hooks/useTypedReduxHooks'
+import { setTheme } from '@store/slices/settingsSlice'
 
 export const useDarkMode = () => {
-	//#TODO: LocalStorage persist
-	const [theme, setTheme] = useState<'dark' | 'light'>(localStorage.mode ?? 'dark')
+	const dispatch = useAppDispatch()
+	const { theme } = useAppSelector(
+		state => state.persistedReducer.settingsSlice,
+	)
 	const mode = theme == 'dark' ? 'light' : 'dark'
 
 	useEffect(() => {
 		const root = window.document.documentElement
 		theme == 'dark' ? root.classList.add('dark') : root.classList.remove('dark')
-		localStorage.setItem('mode', theme)
-	}, [theme, mode])
+	})
 
-	return { theme, toggle: () => setTheme(mode) }
+	return { theme, toggle: () => dispatch(setTheme({ theme: mode })) }
 }

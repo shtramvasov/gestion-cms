@@ -1,11 +1,10 @@
 import { useAppSelector } from '@hooks/useTypedReduxHooks'
 
 export const useAuth = () => {
-	const { email, token, id } = useAppSelector(state => state.persistedReducer)
+	const { email, id } = useAppSelector(state => state.persistedReducer.authUserSlice)
 
 	return {
 		email,
-		token,
 		id,
 		isAuth: !!email,
 	}

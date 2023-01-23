@@ -3,9 +3,11 @@ import storage from 'redux-persist/lib/storage'
 import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { firebaseApi } from './api/firebaseApi'
 import authUserSlice from './slices/authUserSlice'
+import settingsSlice from './slices/settingsSlice'
 import {
 	persistStore,
 	persistReducer,
+	persistCombineReducers,
 	FLUSH,
 	REHYDRATE,
 	PAUSE,
@@ -18,7 +20,11 @@ const persistConfig = {
 	key: 'root',
 	storage,
 }
-const persistedReducer = persistReducer(persistConfig, authUserSlice)
+
+const persistedReducer = persistCombineReducers(persistConfig, {
+	authUserSlice,
+	settingsSlice,
+})
 
 export const store = configureStore({
 	reducer: {
