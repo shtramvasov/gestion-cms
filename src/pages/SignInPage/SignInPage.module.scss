@@ -20,8 +20,16 @@
 
 .form {
 	@apply flex flex-col order-3 w-full pt-3 md:w-96 gap-5;
+
+	&__pending {
+		@apply opacity-60;
+	}
+}
+
+.radiogroup {
+	@apply grid grid-cols-1 md:grid-cols-2 gap-2;
 }
 
 .select {
-  @apply bg-gest-accent-lemon-400 
+	@apply bg-gest-accent-lemon-400;
 }

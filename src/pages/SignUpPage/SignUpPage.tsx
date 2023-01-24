@@ -14,6 +14,7 @@ import { setAuthUser } from '@store/slices/authUserSlice'
 import { useAppDispatch } from '@hooks/useTypedReduxHooks'
 import { useDarkMode } from '@hooks/useDarkMode'
 import { toast } from 'react-toastify'
+import classnames from 'classnames'
 import styles from '@pages/SignInPage/SignInPage.module.scss'
 
 const SignUpPage: FC = () => {
@@ -65,7 +66,12 @@ const SignUpPage: FC = () => {
 		<section className={styles.wrapper}>
 			<Logo />
 			<h1>Впервые с нами?</h1>
-			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+			<form
+				className={classnames(styles.form, {
+					[styles.form__pending]: isLoading,
+				})}
+				onSubmit={handleSubmit(onSubmit)}
+			>
 				<Input
 					placeholder='Почта'
 					type='email'
@@ -93,7 +99,7 @@ const SignUpPage: FC = () => {
 						required: 'Введите ваше имя',
 					})}
 				/>
-				<div className='flex justify-center gap-5 '>
+				<div className={styles.radiogroup}>
 					<Input
 						type='radio'
 						label='Менеджер'
@@ -105,8 +111,20 @@ const SignUpPage: FC = () => {
 					/>
 					<Input
 						type='radio'
-						label='Рабочий'
-						value='Рабочий'
+						label='Разработчик'
+						value='Разработчик'
+						{...register('position')}
+					/>
+					<Input
+						type='radio'
+						label='Дизайнер'
+						value='Дизайнер'
+						{...register('position')}
+					/>
+					<Input
+						type='radio'
+						label='Тестировщик'
+						value='Тестировщик'
 						{...register('position')}
 					/>
 				</div>
