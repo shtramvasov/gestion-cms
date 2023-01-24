@@ -1,0 +1,8 @@
+.container {
+  @apply flex flex-col justify-center md:gap-4 md:p-5 rounded-md md:bg-slate-200 md:dark:bg-gest-slate-800;
+
+}
+
+.break {
+  @apply hidden md:flex self-center border w-3/6 border-slate-300 dark:border-gest-slate-600
+}

@@ -1,5 +1,5 @@
 .wrapper {
-	@apply flex flex-col gap-4 px-12 md:px-0 w-screen h-screen bg-slate-200 dark:bg-gest-slate-800 justify-center items-center;
+	@apply flex flex-col gap-4 px-12 md:px-0 w-screen min-h-screen bg-slate-200 dark:bg-gest-slate-800 justify-center items-center;
 
 	h1 {
 		@apply text-3xl order-2 text-gray-800 dark:text-slate-50 font-semibold md:pt-6;

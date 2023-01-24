@@ -7,6 +7,7 @@ import LogoutButton from '@components/Layout/LogoutButton/LogoutButton'
 import { NavigationData as data } from '@components/Layout/Navigation/Navigation.data'
 import { useAuth } from '@hooks/useAuth'
 import styles from './Sidebar.module.scss'
+import AuthLinks from '@components/AuthLinks/AuthLinks'
 
 const Sidebar: FC = () => {
 	const { isAuth, id } = useAuth()
@@ -14,7 +15,11 @@ const Sidebar: FC = () => {
 	return (
 		<aside className={styles.sidebar}>
 			<Logo />
-			{isAuth ? <Avatar uid={id} size='md' sidebar /> : <p>Войдите</p>} 
+			{!isAuth ? (
+				<Avatar uid={id} size='md' sidebar />
+			) : (
+				<AuthLinks className='order-3 md:order-2' />
+			)}
 			<Navigation links={data} />
 			<DarkModeToggle />
 			<LogoutButton />

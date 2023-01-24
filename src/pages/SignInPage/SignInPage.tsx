@@ -72,7 +72,7 @@ const SignInPage: FC = () => {
 						minLength: { value: 6, message: 'Пароль не менее 6 символов' },
 					})}
 				/>
-				<Button large secondary>
+				<Button large secondary disabled>
 					Войти
 				</Button>
 			</form>
