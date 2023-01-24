@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Heading from '@components/Heading/Heading'
 import TaskItem from '@pages/DashboardPage/TaskItem/TaskItem'
-import UIButton from '@components/UI/UIButton/UIButton'
+import Button from '@components/UI/Button/Button'
 import styles from './TasksSection.module.scss'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
@@ -17,9 +17,9 @@ const TasksSection: FC = () => {
 		<section className={styles.container}>
 			<div className={styles.header}>
 				<Heading text='Последняя задача' date={date} />
-				<UIButton secondary rounded large>
+				<Button secondary rounded large>
 					<HiPlus />
-				</UIButton>
+				</Button>
 			</div>
 			<TaskItem data={rescentTask} />
 		</section>

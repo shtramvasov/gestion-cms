@@ -1,9 +1,9 @@
 import { FC, forwardRef } from 'react'
-import { IInput } from './UIInput.interface'
+import { IInput } from './Input.interface'
 import classnames from 'classnames'
-import styles from './UIInput.module.scss'
+import styles from './Input.module.scss'
 
-const UIInput: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
+const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
 	({ error, label, type = 'text', className, ...rest }, ref) => {
 		return (
 			<div className={classnames(styles.input, className)}>
@@ -21,6 +21,6 @@ const UIInput: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
 	},
 )
 
-UIInput.displayName = 'UIInput'
+Input.displayName = 'Input'
 
-export default UIInput
+export default Input

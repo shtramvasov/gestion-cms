@@ -1,9 +1,9 @@
 import { FC, PropsWithChildren } from 'react'
-import { IButton } from './UIButton.interface'
+import { IButton } from './Button.interface'
 import classnames from 'classnames'
-import styles from './UIButton.module.scss'
+import styles from './Button.module.scss'
 
-const UIButton: FC<PropsWithChildren<IButton>> = ({
+const Button: FC<PropsWithChildren<IButton>> = ({
 	children,
 	className,
 	secondary,
@@ -33,4 +33,4 @@ const UIButton: FC<PropsWithChildren<IButton>> = ({
 	)
 }
 
-export default UIButton
+export default Button

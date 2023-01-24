@@ -4,7 +4,7 @@ import TaskItem from '@pages/DashboardPage/TaskItem/TaskItem'
 import styles from './PinnedSection.module.scss'
 import TasksManager from '@pages/DashboardPage/TasksManager/TasksManager'
 import { useFetchTasksQuery } from '@store/slices/tasksSlice'
-import UILoader from '@components/UI/UILoader/UILoader'
+import Loader from '@components/UI/Loader/Loader'
 
 const PinnedSection: FC = () => {
 	const { data, isFetching } = useFetchTasksQuery()
@@ -12,7 +12,7 @@ const PinnedSection: FC = () => {
 	return (
 		<section className={styles.container}>
 			<Heading text='Прикрепленные задачи' />
-			{isFetching && <UILoader />}
+			{isFetching && <Loader />}
 			{data?.map(
 				task => task.isPinned && <TaskItem data={task} key={task.id} pinned />,
 			)}

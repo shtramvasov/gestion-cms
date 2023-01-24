@@ -2,8 +2,8 @@ import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Logo from '@components/Logo/Logo'
 import SignFooter from './SignFooter'
-import UIInput from '@components/UI/UIInput/UIInput'
-import UIButton from '@components/UI/UIButton/UIButton'
+import Input from '@components/UI/Input/Input'
+import Button from '@components/UI/Button/Button'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { validateEmail } from '@utils/validateEmail'
@@ -66,7 +66,7 @@ const SignUpPage: FC = () => {
 			<Logo />
 			<h1>Впервые с нами?</h1>
 			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-				<UIInput
+				<Input
 					placeholder='Почта'
 					type='email'
 					error={errors.email}
@@ -78,7 +78,7 @@ const SignUpPage: FC = () => {
 						},
 					})}
 				/>
-				<UIInput
+				<Input
 					placeholder='Пароль'
 					error={errors.password}
 					{...register('password', {
@@ -86,7 +86,7 @@ const SignUpPage: FC = () => {
 						minLength: { value: 6, message: 'Пароль не менее 6 символов' },
 					})}
 				/>
-				<UIInput
+				<Input
 					placeholder='Имя'
 					error={errors.name}
 					{...register('name', {
@@ -94,7 +94,7 @@ const SignUpPage: FC = () => {
 					})}
 				/>
 				<div className='flex justify-center gap-5 '>
-					<UIInput
+					<Input
 						type='radio'
 						label='Менеджер'
 						value='Менеджер'
@@ -103,22 +103,22 @@ const SignUpPage: FC = () => {
 							required: 'Выберите должность',
 						})}
 					/>
-					<UIInput
+					<Input
 						type='radio'
 						label='Рабочий'
 						value='Рабочий'
 						{...register('position')}
 					/>
 				</div>
-				<UIInput
+				<Input
 					type='file'
 					accept='.png, .jpg, .jpeg'
 					required
 					{...register('file')}
 				/>
-				<UIButton large secondary>
+				<Button large secondary>
 					{isLoading ? 'Отправка на сервер...' : 'Зарегистрироваться'}
-				</UIButton>
+				</Button>
 			</form>
 			<SignFooter className={styles.footer} isSigningUp />
 		</section>

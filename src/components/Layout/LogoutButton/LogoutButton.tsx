@@ -1,4 +1,4 @@
-import UIButton from '@components/UI/UIButton/UIButton'
+import Button from '@components/UI/Button/Button'
 import { FC } from 'react'
 import { BiLogIn } from 'react-icons/bi'
 import { useAppDispatch } from '@hooks/useTypedReduxHooks'
@@ -8,10 +8,10 @@ import styles from './LogoutButton.module.scss'
 const LogoutButton: FC = () => {
 	const dispatch = useAppDispatch()
 	return (
-		<UIButton onClick={() => dispatch(logout())} className={styles.logout}>
+		<Button onClick={() => dispatch(logout())} className={styles.logout}>
 			<BiLogIn />
 			<span>Выйти из аккаунта</span>
-		</UIButton>
+		</Button>
 	)
 }
 

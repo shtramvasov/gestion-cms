@@ -1,6 +1,6 @@
 import Avatar from '@components/Avatar/Avatar'
 import { FC } from 'react'
-import UILoader from '@components/UI/UILoader/UILoader'
+import Loader from '@components/UI/Loader/Loader'
 import { ITask } from '@interfaces/ITask'
 import styles from './TaskItem.module.scss'
 import classnames from 'classnames'
@@ -39,7 +39,7 @@ const TaskItem: FC<IProps> = ({ pinned, data }) => {
 						<p>
 							Добавлено: <span>{data?.author.name}</span>
 						</p>
-						{data ? <Avatar uid={data?.author.uid} size='sm' /> : <UILoader />}
+						{data ? <Avatar uid={data?.author.uid} size='sm' /> : <Loader />}
 					</div>
 				</>
 			)}

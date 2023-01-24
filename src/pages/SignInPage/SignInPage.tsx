@@ -2,8 +2,8 @@ import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Logo from '@components/Logo/Logo'
 import SignFooter from '@pages/SignUpPage/SignFooter'
-import UIInput from '@components/UI/UIInput/UIInput'
-import UIButton from '@components/UI/UIButton/UIButton'
+import Input from '@components/UI/Input/Input'
+import Button from '@components/UI/Button/Button'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { validateEmail } from '@utils/validateEmail'
@@ -52,7 +52,7 @@ const SignInPage: FC = () => {
 			<Logo />
 			<h1>Добро пожаловать!</h1>
 			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-				<UIInput
+				<Input
 					placeholder='Почта'
 					type='email'
 					error={errors.email}
@@ -64,7 +64,7 @@ const SignInPage: FC = () => {
 						},
 					})}
 				/>
-				<UIInput
+				<Input
 					placeholder='Пароль'
 					error={errors.password}
 					{...register('password', {
@@ -72,9 +72,9 @@ const SignInPage: FC = () => {
 						minLength: { value: 6, message: 'Пароль не менее 6 символов' },
 					})}
 				/>
-				<UIButton large secondary>
+				<Button large secondary>
 					Войти
-				</UIButton>
+				</Button>
 			</form>
 			<SignFooter className={styles.footer} isSigningUp={false} />
 		</section>

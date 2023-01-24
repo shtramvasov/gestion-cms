@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { BiLoaderAlt } from 'react-icons/bi'
-import styles from './UILoader.module.scss'
+import styles from './Loader.module.scss'
 
-const UILoader: FC = () => {
+const Loader: FC = () => {
 	return <BiLoaderAlt className={styles.loader} />
 }
 
-export default UILoader
+export default Loader

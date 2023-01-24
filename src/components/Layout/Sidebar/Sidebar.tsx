@@ -14,7 +14,7 @@ const Sidebar: FC = () => {
 	return (
 		<aside className={styles.sidebar}>
 			<Logo />
-			{isAuth ? <Avatar uid={id} size='md' sidebar /> : <p>Войдите</p>}
+			{isAuth ? <Avatar uid={id} size='md' sidebar /> : <p>Войдите</p>} 
 			<Navigation links={data} />
 			<DarkModeToggle />
 			<LogoutButton />
