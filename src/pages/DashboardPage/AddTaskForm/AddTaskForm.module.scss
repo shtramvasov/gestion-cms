@@ -1,0 +1,7 @@
+.container {
+  @apply flex flex-col items-center gap-4;
+}
+
+.form {
+	@apply flex flex-col p-6 rounded-md md:w-96 gap-2.5 bg-slate-200 dark:bg-gest-slate-800;
+}

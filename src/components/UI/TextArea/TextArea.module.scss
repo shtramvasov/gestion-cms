@@ -1,0 +1,21 @@
+.textarea {
+	@apply relative block mb-4;
+
+	> textarea {
+    min-height: 14rem;;
+		@apply p-3 flex w-full items-center rounded-md outline-none border transition
+    bg-slate-50 dark:bg-gest-slate-700 text-slate-800 dark:text-slate-50 border-gray-300 dark:border-none;
+
+		&:focus {
+			@apply border-gest-accent-blue-400 dark:bg-gest-slate-600;
+		}
+
+		&::placeholder {
+			@apply text-gray-400;
+		}
+	}
+}
+
+.error {
+	@apply absolute -bottom-5 left-0 w-full text-gest-accent-rose-400 text-sm;
+}
