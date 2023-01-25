@@ -1,0 +1,19 @@
+.modal {
+	@apply hidden fixed top-0 left-0 w-screen h-screen bg-black/40;
+
+	&__active {
+		@apply flex justify-center items-center;
+	}
+}
+
+.container {
+	@apply relative flex py-20 px-32 rounded-md bg-slate-100 dark:bg-gest-slate-700;
+}
+
+.close {
+	@apply absolute top-5 right-5 cursor-pointer text-xl text-gray-800 dark:text-slate-200 transition;
+
+	&:hover {
+		@apply text-gest-accent-rose-300;
+	}
+}
