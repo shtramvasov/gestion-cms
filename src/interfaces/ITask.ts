@@ -4,10 +4,10 @@ interface IAuthor {
 }
 
 export interface ITask {
-  id: string
+	id: string
 	title: string
 	description: string
-	createdAt: string
+	createdAt: any
 	tag: 'Срочная задача' | 'Для дизайнеров' | 'Для разработчиков' | 'Новости'
 	taggedUsers: string[]
 	isPinned: boolean

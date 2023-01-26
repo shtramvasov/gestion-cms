@@ -4,16 +4,7 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { firebaseApi } from './api/firebaseApi'
 import authUserSlice from './slices/authUserSlice'
 import settingsSlice from './slices/settingsSlice'
-import {
-	persistStore,
-	persistCombineReducers,
-	FLUSH,
-	REHYDRATE,
-	PAUSE,
-	PERSIST,
-	PURGE,
-	REGISTER,
-} from 'redux-persist'
+import { persistStore, persistCombineReducers } from 'redux-persist'
 
 const persistConfig = {
 	key: 'root',
@@ -32,9 +23,7 @@ export const store = configureStore({
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
-			serializableCheck: {
-				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-			}, 
+			serializableCheck: false,
 		}).concat(firebaseApi.middleware),
 })
 

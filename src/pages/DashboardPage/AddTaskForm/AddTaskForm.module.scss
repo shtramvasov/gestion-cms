@@ -9,3 +9,7 @@
 .radiogroup {
 	@apply grid grid-cols-1 md:grid-cols-2 gap-2;
 }
+
+.error {
+	@apply text-gest-accent-rose-400 text-sm;
+}

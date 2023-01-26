@@ -2,6 +2,7 @@ import Avatar from '@components/Avatar/Avatar'
 import { FC } from 'react'
 import Loader from '@components/UI/Loader/Loader'
 import { ITask } from '@interfaces/ITask'
+import { convertToDate } from '@utils/convertToDate'
 import styles from './TaskItem.module.scss'
 import classnames from 'classnames'
 
@@ -11,13 +12,11 @@ interface IProps {
 }
 
 const TaskItem: FC<IProps> = ({ pinned, data }) => {
-	const description = data?.description.replaceAll('\\n', '\n\n')
-
 	return (
 		<div className={classnames(styles.container, { [styles.pinned]: pinned })}>
 			{pinned && (
 				<p className={styles.date}>
-					<span>Закреплено</span> {data?.createdAt}
+					<span>Закреплено</span> {convertToDate(data?.createdAt)}
 				</p>
 			)}
 			<h2>{data?.title}</h2>
@@ -31,7 +30,7 @@ const TaskItem: FC<IProps> = ({ pinned, data }) => {
 			</div>
 			{!pinned && (
 				<>
-					<p className='whitespace-pre-line'>{description}</p>
+					<p className='whitespace-pre-line'>{data?.description}</p>
 					<div className={styles.author}>
 						<p>
 							Добавлено: <span>{data?.author.name}</span>

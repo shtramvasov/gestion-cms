@@ -45,19 +45,27 @@ const AddTaskForm: FC = () => {
 				<Controller
 					control={control}
 					name='taggedUsers'
+					rules={{ required: 'Выберите исполнителя' }}
 					render={({ field: { onChange } }) => (
-						<Select
-							classNamePrefix='uiselect'
-							isMulti
-							placeholder='Исполнители'
-							options={users?.map(user => ({
-								label: user.name,
-								value: user.uid,
-							}))}
-							onChange={values => {
-								onChange(values.map(option => option.value))
-							}}
-						/>
+						<>
+							<Select
+								classNamePrefix='uiselect'
+								isMulti
+								placeholder='Исполнители'
+								options={users?.map(user => ({
+									label: user.name,
+									value: user.uid,
+								}))}
+								onChange={values => {
+									onChange(values.map(option => option.value))
+								}}
+							/>
+							{errors?.taggedUsers && (
+								<span className={styles.error}>
+									{errors?.taggedUsers.message}
+								</span>
+							)}
+						</>
 					)}
 				/>
 				<div className={styles.radiogroup}>

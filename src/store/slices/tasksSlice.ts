@@ -1,7 +1,11 @@
 import { firebaseApi } from '@store/api/firebaseApi'
 import { database } from '@store/api/firebase'
-import { collection, getDocs, addDoc } from 'firebase/firestore'
-import { getTodaysDate } from '@utils/getTodaysDate'
+import {
+	collection,
+	getDocs,
+	addDoc,
+	serverTimestamp,
+} from 'firebase/firestore'
 import { ITask } from '@interfaces/ITask'
 
 const tasksdb = collection(database, 'tasks')
@@ -18,7 +22,9 @@ export const tasksApi = firebaseApi.injectEndpoints({
 						tasks.push({ id: doc.id, ...doc.data() } as ITask)
 					})
 					return {
-						data: tasks.sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
+						data: tasks.sort((a, b) =>
+							b.createdAt.toString().localeCompare(a.createdAt.toString()),
+						),
 					}
 				} catch (error: any) {
 					return error.message
@@ -36,8 +42,7 @@ export const tasksApi = firebaseApi.injectEndpoints({
 						isPinned: data.isPinned,
 						taggedUsers: data.taggedUsers,
 						author: data.author,
-						createdAt: getTodaysDate(),
-						// createdAt
+						createdAt: serverTimestamp(),
 					})
 					return { data: null }
 				} catch (error: any) {
