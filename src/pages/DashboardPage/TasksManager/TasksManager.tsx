@@ -10,7 +10,7 @@ import styles from './TasksManager.module.scss'
 
 const TasksManager: FC = () => {
 	const { isAuth } = useAuth()
-	const [openAddTask, setOpenAddTask] = useState(true)
+	const [openAddTask, setOpenAddTask] = useState(false)
 	const [openTaskList, setOpenTaskList] = useState(false)
 
 	return (

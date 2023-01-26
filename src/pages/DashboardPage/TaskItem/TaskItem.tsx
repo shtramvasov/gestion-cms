@@ -4,8 +4,6 @@ import Loader from '@components/UI/Loader/Loader'
 import { ITask } from '@interfaces/ITask'
 import styles from './TaskItem.module.scss'
 import classnames from 'classnames'
-import dayjs from 'dayjs'
-import 'dayjs/locale/ru'
 
 interface IProps {
 	pinned?: boolean
@@ -14,13 +12,12 @@ interface IProps {
 
 const TaskItem: FC<IProps> = ({ pinned, data }) => {
 	const description = data?.description.replaceAll('\\n', '\n\n')
-	const createdAt = dayjs(data?.createdAt).locale('ru').format('D MMMM YYYY')
 
 	return (
 		<div className={classnames(styles.container, { [styles.pinned]: pinned })}>
 			{pinned && (
 				<p className={styles.date}>
-					<span>Закреплено</span> {createdAt}
+					<span>Закреплено</span> {data?.createdAt}
 				</p>
 			)}
 			<h2>{data?.title}</h2>

@@ -1,6 +1,7 @@
 import { firebaseApi } from '@store/api/firebaseApi'
 import { database } from '@store/api/firebase'
 import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { getTodaysDate } from '@utils/getTodaysDate'
 import { ITask } from '@interfaces/ITask'
 
 const tasksdb = collection(database, 'tasks')
@@ -35,6 +36,7 @@ export const tasksApi = firebaseApi.injectEndpoints({
 						isPinned: data.isPinned,
 						taggedUsers: data.taggedUsers,
 						author: data.author,
+						createdAt: getTodaysDate(),
 						// createdAt
 					})
 					return { data: null }

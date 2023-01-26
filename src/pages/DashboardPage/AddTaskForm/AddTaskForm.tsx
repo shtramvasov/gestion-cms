@@ -7,17 +7,15 @@ import Button from '@components/UI/Button/Button'
 import TextArea from '@components/UI/TextArea/TextArea'
 import { ITask } from '@interfaces/ITask'
 import { useFetchUserQuery, useFetchUsersQuery } from '@store/slices/usersSlice'
-import styles from './AddTaskForm.module.scss'
-
-import { useAuth } from '@hooks/useAuth'
 import { useAddTaskMutation } from '@store/slices/tasksSlice'
+import { useAuth } from '@hooks/useAuth'
+import styles from './AddTaskForm.module.scss'
 
 const AddTaskForm: FC = () => {
 	const { data: users } = useFetchUsersQuery()
 	const { id } = useAuth()
 	const { data: author } = useFetchUserQuery(id)
 	const [addTask] = useAddTaskMutation()
-	// console.log(author)
 
 	const {
 		register,
@@ -30,7 +28,6 @@ const AddTaskForm: FC = () => {
 	const onSubmit: SubmitHandler<ITask> = async data => {
 		data.author = { name: author?.name, uid: author?.uid }
 		addTask(data)
-		// console.log(data)
 		reset()
 	}
 
