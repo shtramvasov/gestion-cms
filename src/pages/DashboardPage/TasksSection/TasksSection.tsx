@@ -14,8 +14,8 @@ import { useAuth } from '@hooks/useAuth'
 const TasksSection: FC = () => {
 	const { isAuth } = useAuth()
 	const { data } = useFetchTasksQuery()
-	const [openAddTask, setOpenAddTask] = useState(false)
 	const rescentTask = data?.[0]
+	const [openAddTask, setOpenAddTask] = useState(false)
 
 	return (
 		<section className={styles.container}>
@@ -36,7 +36,7 @@ const TasksSection: FC = () => {
 			</div>
 			<TaskItem data={rescentTask} />
 			<Modal isOpen={openAddTask} onClose={() => setOpenAddTask(false)}>
-				<AddTaskForm />
+				<AddTaskForm close={() => setOpenAddTask(false)} />
 			</Modal>
 		</section>
 	)

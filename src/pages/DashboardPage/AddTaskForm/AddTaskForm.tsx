@@ -11,7 +11,11 @@ import { useAddTaskMutation } from '@store/slices/tasksSlice'
 import { useAuth } from '@hooks/useAuth'
 import styles from './AddTaskForm.module.scss'
 
-const AddTaskForm: FC = () => {
+interface IProps {
+	close?: () => void
+}
+
+const AddTaskForm: FC<IProps> = ({ close }) => {
 	const { data: users } = useFetchUsersQuery()
 	const { id } = useAuth()
 	const { data: author } = useFetchUserQuery(id)
@@ -29,6 +33,9 @@ const AddTaskForm: FC = () => {
 		data.author = { name: author?.name, uid: author?.uid }
 		addTask(data)
 		reset()
+		if (close) {
+			close()
+		}
 	}
 
 	return (

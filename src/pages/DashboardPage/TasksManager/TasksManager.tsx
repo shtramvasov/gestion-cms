@@ -33,7 +33,7 @@ const TasksManager: FC = () => {
 				<h2>Список задач</h2>
 			</Modal>
 			<Modal isOpen={openAddTask} onClose={() => setOpenAddTask(false)}>
-				<AddTaskForm />
+				<AddTaskForm close={() => setOpenAddTask(false)} />
 			</Modal>
 		</div>
 	)
