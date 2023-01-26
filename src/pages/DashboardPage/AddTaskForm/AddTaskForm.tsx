@@ -6,11 +6,18 @@ import Input from '@components/UI/Input/Input'
 import Button from '@components/UI/Button/Button'
 import TextArea from '@components/UI/TextArea/TextArea'
 import { ITask } from '@interfaces/ITask'
-import { useFetchUsersQuery } from '@store/slices/usersSlice'
+import { useFetchUserQuery, useFetchUsersQuery } from '@store/slices/usersSlice'
 import styles from './AddTaskForm.module.scss'
+
+import { useAuth } from '@hooks/useAuth'
+import { useAddTaskMutation } from '@store/slices/tasksSlice'
 
 const AddTaskForm: FC = () => {
 	const { data: users } = useFetchUsersQuery()
+	const { id } = useAuth()
+	const { data: author } = useFetchUserQuery(id)
+	const [addTask] = useAddTaskMutation()
+	// console.log(author)
 
 	const {
 		register,
@@ -21,7 +28,9 @@ const AddTaskForm: FC = () => {
 	} = useForm<ITask>()
 
 	const onSubmit: SubmitHandler<ITask> = async data => {
-		console.log(data)
+		data.author = { name: author?.name, uid: author?.uid }
+		addTask(data)
+		// console.log(data)
 		reset()
 	}
 
@@ -69,8 +78,8 @@ const AddTaskForm: FC = () => {
 					/>
 					<Input
 						type='radio'
-						label='Для разрабочков'
-						value='Для разрабочков'
+						label='Для разработчиков'
+						value='Для разработчиков'
 						error={errors.tag}
 						{...register('tag', {
 							required: 'Выберите тег',

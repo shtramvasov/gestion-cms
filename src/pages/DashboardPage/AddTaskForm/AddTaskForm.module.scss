@@ -1,9 +1,9 @@
 .container {
-	@apply flex flex-col items-center gap-4 md:gap-6 ;
+	@apply flex flex-col items-center gap-4 md:gap-4;
 }
 
 .form {
-	@apply flex flex-col p-6 rounded-md gap-2.5 w-96 md:w-[32rem] lg:w-[45rem] bg-slate-200 dark:bg-gest-slate-800;
+	@apply flex flex-col p-6 rounded-md gap-2 w-96 md:w-[32rem] lg:w-[45rem] bg-slate-200 dark:bg-gest-slate-800;
 }
 
 .radiogroup {

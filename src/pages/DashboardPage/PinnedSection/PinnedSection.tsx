@@ -8,13 +8,15 @@ import Loader from '@components/UI/Loader/Loader'
 
 const PinnedSection: FC = () => {
 	const { data, isFetching } = useFetchTasksQuery()
+	// console.log(data)
 
 	return (
 		<section className={styles.container}>
 			<Heading text='Прикрепленные задачи' />
 			{isFetching && <Loader />}
 			{data?.map(
-				task => task.isPinned && <TaskItem data={task} key={task.id} pinned />,
+				task =>
+					task.isPinned && <TaskItem data={task} key={task.createdAt} pinned />,
 			)}
 			<TasksManager />
 		</section>

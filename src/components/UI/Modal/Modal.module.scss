@@ -7,7 +7,7 @@
 }
 
 .container {
-	@apply relative flex py-12 md:py-14 px-12 md:px-20 rounded-md bg-slate-100 dark:bg-gest-slate-700;
+	@apply relative flex p-12 rounded-md bg-slate-100 dark:bg-gest-slate-700;
 }
 
 .close {

@@ -1,7 +1,9 @@
 import { firebaseApi } from '@store/api/firebaseApi'
 import { database } from '@store/api/firebase'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, addDoc } from 'firebase/firestore'
 import { ITask } from '@interfaces/ITask'
+
+const tasksdb = collection(database, 'tasks')
 
 export const tasksApi = firebaseApi.injectEndpoints({
 	endpoints: builder => ({
@@ -23,7 +25,26 @@ export const tasksApi = firebaseApi.injectEndpoints({
 			},
 			providesTags: ['Tasks'],
 		}),
+		addTask: builder.mutation<null, ITask>({
+			async queryFn(data) {
+				try {
+					await addDoc(tasksdb, {
+						title: data.title,
+						description: data.description,
+						tag: data.tag,
+						isPinned: data.isPinned,
+						taggedUsers: data.taggedUsers,
+						author: data.author,
+						// createdAt
+					})
+					return { data: null }
+				} catch (error: any) {
+					return error.message
+				}
+			},
+			invalidatesTags: ['Tasks'],
+		}),
 	}),
 })
 
-export const { useFetchTasksQuery } = tasksApi
+export const { useFetchTasksQuery, useAddTaskMutation } = tasksApi
