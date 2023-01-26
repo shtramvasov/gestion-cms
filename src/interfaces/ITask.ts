@@ -8,7 +8,7 @@ export interface ITask {
 	title: string
 	description: string
 	createdAt: string
-	tag: string
+	tag: 'Срочная задача' | 'Для дизайнеров' | 'Для разрабочков' | 'Новости'
 	taggedUsers: string[]
 	isPinned: boolean
 	author: IAuthor

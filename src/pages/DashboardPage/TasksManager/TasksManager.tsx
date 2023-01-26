@@ -8,15 +8,15 @@ import { BiLockAlt } from 'react-icons/bi'
 import { useAuth } from '@hooks/useAuth'
 import styles from './TasksManager.module.scss'
 
-
 const TasksManager: FC = () => {
 	const { isAuth } = useAuth()
 	const [openAddTask, setOpenAddTask] = useState(true)
+	const [openTaskList, setOpenTaskList] = useState(false)
 
 	return (
 		<div className={styles.container}>
 			<Heading text='Остальные задачи' />
-			<Button className='bg-slate-300'>
+			<Button className='bg-slate-300' onClick={() => setOpenTaskList(true)}>
 				<HiOutlineDotsHorizontal /> Посмотреть все задачи
 			</Button>
 			{isAuth ? (
@@ -29,6 +29,9 @@ const TasksManager: FC = () => {
 				</Button>
 			)}
 
+			<Modal isOpen={openTaskList} onClose={() => setOpenTaskList(false)}>
+				<h2>Список задач</h2>
+			</Modal>
 			<Modal isOpen={openAddTask} onClose={() => setOpenAddTask(false)}>
 				<AddTaskForm />
 			</Modal>

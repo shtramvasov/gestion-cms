@@ -46,3 +46,26 @@ body {
 .Toastify__toast--success {
 	@apply bg-green-50 text-gest-accent-green-500;
 }
+
+.uiselect {
+	&__control {
+    margin-bottom: 1rem;
+    padding: 0.40rem;
+    border: none !important;
+    border-radius: none !important;
+    outline: none !important;
+		cursor: pointer !important;
+	}
+}
+
+@media (max-width: 640px) {
+  .uiselect {
+	&__control {
+    height: 2rem !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-bottom: 0.2rem !important;
+    padding: 0 !important;
+	}
+}
+}
