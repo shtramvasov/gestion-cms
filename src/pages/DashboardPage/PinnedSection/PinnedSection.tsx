@@ -13,9 +13,12 @@ const PinnedSection: FC = () => {
 		<section className={styles.container}>
 			<Heading text='Прикрепленные задачи' />
 			{isFetching && <Loader />}
-			{data?.map(
-				task => task.isPinned && <TaskItem data={task} key={task.id} pinned />,
-			)}
+			<div className={styles.tasks}>
+				{data?.map(
+					task =>
+						task.isPinned && <TaskItem data={task} key={task.id} pinned />,
+				)}
+			</div>
 			<TasksManager />
 		</section>
 	)

@@ -23,6 +23,21 @@ html,
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 16px;
+	scrollbar-width: thin;
+	scrollbar-color: #334155;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+	width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+	@apply bg-slate-300;
+}
+
+body::-webkit-scrollbar-thumb {
+	@apply bg-slate-400 rounded-[20px];
 }
 
 @layer components {
@@ -49,23 +64,23 @@ body {
 
 .uiselect {
 	&__control {
-    margin-bottom: 1rem;
-    padding: 0.40rem;
-    border: none !important;
-    border-radius: none !important;
-    outline: none !important;
+		margin-bottom: 1rem;
+		padding: 0.4rem;
+		border: none !important;
+		border-radius: none !important;
+		outline: none !important;
 		cursor: pointer !important;
 	}
 }
 
 @media (max-width: 640px) {
-  .uiselect {
-	&__control {
-    height: 2rem !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin-bottom: 0.2rem !important;
-    padding: 0 !important;
+	.uiselect {
+		&__control {
+			height: 2rem !important;
+			justify-content: center !important;
+			align-items: center !important;
+			margin-bottom: 0.2rem !important;
+			padding: 0 !important;
+		}
 	}
-}
 }
