@@ -9,10 +9,14 @@ text-gray-800 dark:text-slate-100
 	}
 
 	&.pinned {
-		@apply lg:p-4 gap-1 bg-slate-200 border-slate-300 dark:border-none dark:bg-gest-slate-600;
+		@apply lg:p-4 gap-1 bg-slate-200 border-slate-300 dark:border-transparent dark:bg-gest-slate-600 cursor-pointer transition duration-500;
 
 		h2 {
 			@apply text-xl;
+		}
+
+		&:hover {
+			@apply border-gest-accent-blue-400 dark:border-gest-accent-indigo;
 		}
 	}
 
@@ -55,4 +59,8 @@ text-gray-800 dark:text-slate-100
 			@apply font-semibold text-gest-accent-blue-400 dark:text-gest-accent-indigo;
 		}
 	}
+}
+
+.modal {
+	@apply max-w-2xl md:m-2;
 }

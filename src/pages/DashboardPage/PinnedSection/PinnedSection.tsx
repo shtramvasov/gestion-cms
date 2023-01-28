@@ -16,7 +16,7 @@ const PinnedSection: FC = () => {
 			<div className={styles.tasks}>
 				{data?.map(
 					task =>
-						task.isPinned && <TaskItem data={task} key={task.id} pinned />,
+						task.isPinned && <TaskItem key={task.id} data={task} pinned />,
 				)}
 			</div>
 			<TasksManager />

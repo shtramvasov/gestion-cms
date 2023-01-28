@@ -1,5 +1,5 @@
 .modal {
-	@apply z-50 hidden fixed top-0 left-0 w-screen h-screen bg-black/40;
+	@apply z-50 hidden overflow-y-scroll fixed top-0 left-0 w-screen h-screen bg-black/40;
 
 	&__active {
 		@apply flex justify-center items-center;

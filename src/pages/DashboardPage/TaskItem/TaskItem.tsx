@@ -1,6 +1,7 @@
-import Avatar from '@components/Avatar/Avatar'
-import { FC } from 'react'
-import Loader from '@components/UI/Loader/Loader'
+import { FC, useState } from 'react'
+import TeamBlock from './TeamBlock/TeamBlock'
+import AuthorBlock from './AuthorBlock/AuthorBlock'
+import Modal from '@components/UI/Modal/Modal'
 import { ITask } from '@interfaces/ITask'
 import { convertToDate } from '@utils/convertToDate'
 import styles from './TaskItem.module.scss'
@@ -12,34 +13,39 @@ interface IProps {
 }
 
 const TaskItem: FC<IProps> = ({ pinned, data }) => {
+	const [openPreview, setOpenPreview] = useState(false)
 	return (
-		<div className={classnames(styles.container, { [styles.pinned]: pinned })}>
-			{pinned && (
-				<p className={styles.date}>
-					<span>Закреплено</span> {convertToDate(data?.createdAt)}
-				</p>
-			)}
-			<h2>{data?.title}</h2>
-			<div className={classnames(styles.team, { [styles.pinned]: pinned })}>
-				<div className='flex gap-1 -space-x-4'>
-					{data?.taggedUsers.map(uid => (
-						<Avatar key={uid} uid={uid} className={styles.overlap} size='sm' />
-					))}
-				</div>
-				<p>{data?.tag}</p>
+		<>
+			<div
+				onClick={() => pinned && setOpenPreview(true)}
+				className={classnames(styles.container, { [styles.pinned]: pinned })}
+			>
+				{pinned && (
+					<p className={styles.date}>
+						<span>Закреплено</span> {convertToDate(data?.createdAt)}
+					</p>
+				)}
+				<h2>{data?.title}</h2>
+				<TeamBlock data={data} pinned={pinned} />
+				{!pinned && (
+					<>
+						<p className='whitespace-pre-line'>{data?.description}</p>
+						<AuthorBlock author={data?.author} />
+					</>
+				)}
 			</div>
-			{!pinned && (
-				<>
-					<p className='whitespace-pre-line'>{data?.description}</p>
-					<div className={styles.author}>
-						<p>
-							Добавлено: <span>{data?.author.name}</span>
-						</p>
-						{data ? <Avatar uid={data?.author.uid} size='sm' /> : <Loader />}
+			<Modal isOpen={openPreview} onClose={() => setOpenPreview(false)}>
+				<div className={classnames(styles.container, styles.modal)}>
+					<div>
+						<h2>{data?.title}</h2>
+						<p className={styles.date}>{convertToDate(data?.createdAt)}</p>
 					</div>
-				</>
-			)}
-		</div>
+					<TeamBlock data={data} pinned={!pinned} />
+					<p className='whitespace-pre-line'>{data?.description}</p>
+					<AuthorBlock author={data?.author} />
+				</div>
+			</Modal>
+		</>
 	)
 }
 
