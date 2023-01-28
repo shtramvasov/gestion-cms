@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import Heading from '@components/Heading/Heading'
-import TaskItem from '@pages/DashboardPage/TaskItem/TaskItem'
-import styles from './PinnedSection.module.scss'
+import Task from '@pages/DashboardPage/Task/Task'
 import TasksManager from '@pages/DashboardPage/TasksManager/TasksManager'
-import { useFetchTasksQuery } from '@store/slices/tasksSlice'
 import { Loader } from '@components/UI'
+import { useFetchTasksQuery } from '@store/slices/tasksSlice'
+import styles from './PinnedSection.module.scss'
 
 const PinnedSection: FC = () => {
 	const { data, isFetching } = useFetchTasksQuery()
@@ -16,7 +16,7 @@ const PinnedSection: FC = () => {
 			<div className={styles.tasks}>
 				{data?.map(
 					task =>
-						task.isPinned && <TaskItem key={task.id} data={task} pinned />,
+						task.isPinned && <Task key={task.id} data={task} pinned />,
 				)}
 			</div>
 			<TasksManager />

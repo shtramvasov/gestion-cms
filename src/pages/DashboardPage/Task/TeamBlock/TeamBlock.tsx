@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Avatar from '@components/Avatar/Avatar'
 import { ITask } from '@interfaces/ITask'
 import classnames from 'classnames'
-import styles from '../TaskItem.module.scss'
+import styles from '../Task.module.scss'
 
 interface IProps {
 	data: ITask | undefined

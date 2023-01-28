@@ -1,19 +1,19 @@
 import { FC, useState } from 'react'
 import Heading from '@components/Heading/Heading'
-import TaskItem from '@pages/DashboardPage/TaskItem/TaskItem'
+import Task from '@pages/DashboardPage/Task/Task'
 import AddTaskForm from '../AddTaskForm/AddTaskForm'
 import { Button, Modal } from '@components/UI'
-import styles from './TasksSection.module.scss'
 import { HiPlus } from 'react-icons/hi'
 import { BiLockAlt } from 'react-icons/bi'
 import { useFetchTasksQuery } from '@store/slices/tasksSlice'
 import { convertToDate } from '@utils/convertToDate'
 import { useAuth } from '@hooks/useAuth'
+import styles from './RescentTask.module.scss'
 
-const TasksSection: FC = () => {
+const RescentTask: FC = () => {
 	const { isAuth } = useAuth()
 	const { data } = useFetchTasksQuery()
-	const rescentTask = data?.[0]
+	const rescent = data?.[0]
 	const [openAddTask, setOpenAddTask] = useState(false)
 
 	return (
@@ -21,7 +21,7 @@ const TasksSection: FC = () => {
 			<div className={styles.header}>
 				<Heading
 					text='Последняя задача'
-					date={convertToDate(rescentTask?.createdAt)}
+					date={convertToDate(rescent?.createdAt)}
 				/>
 				{isAuth ? (
 					<Button secondary rounded large onClick={() => setOpenAddTask(true)}>
@@ -33,7 +33,7 @@ const TasksSection: FC = () => {
 					</Button>
 				)}
 			</div>
-			<TaskItem data={rescentTask} />
+			<Task data={rescent} />
 			<Modal isOpen={openAddTask} onClose={() => setOpenAddTask(false)}>
 				<AddTaskForm close={() => setOpenAddTask(false)} />
 			</Modal>
@@ -41,4 +41,4 @@ const TasksSection: FC = () => {
 	)
 }
 
-export default TasksSection
+export default RescentTask

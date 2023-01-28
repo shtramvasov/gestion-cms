@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import Heading from '@components/Heading/Heading'
-import { Button, Modal } from '@components/UI'
 import AddTaskForm from '../AddTaskForm/AddTaskForm'
+import { Button, Modal } from '@components/UI'
 import { HiOutlineDotsHorizontal, HiOutlineViewGridAdd } from 'react-icons/hi'
 import { BiLockAlt } from 'react-icons/bi'
 import { useAuth } from '@hooks/useAuth'

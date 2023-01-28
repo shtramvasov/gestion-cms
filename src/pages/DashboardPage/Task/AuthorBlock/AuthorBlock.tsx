@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Avatar from '@components/Avatar/Avatar'
 import { Loader } from '@components/UI'
-import styles from '../TaskItem.module.scss'
 import { IAuthor } from '@interfaces/ITask'
+import styles from '../Task.module.scss'
 
 interface IProps {
 	author: IAuthor | undefined

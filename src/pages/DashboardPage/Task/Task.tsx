@@ -4,15 +4,15 @@ import AuthorBlock from './AuthorBlock/AuthorBlock'
 import { Modal } from '@components/UI'
 import { ITask } from '@interfaces/ITask'
 import { convertToDate } from '@utils/convertToDate'
-import styles from './TaskItem.module.scss'
 import classnames from 'classnames'
+import styles from './Task.module.scss'
 
 interface IProps {
 	pinned?: boolean
 	data: ITask | undefined
 }
 
-const TaskItem: FC<IProps> = ({ pinned, data }) => {
+const Task: FC<IProps> = ({ pinned, data }) => {
 	const [openPreview, setOpenPreview] = useState(false)
 	return (
 		<>
@@ -49,4 +49,4 @@ const TaskItem: FC<IProps> = ({ pinned, data }) => {
 	)
 }
 
-export default TaskItem
+export default Task

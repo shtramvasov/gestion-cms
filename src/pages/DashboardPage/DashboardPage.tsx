@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Layout from '@components/Layout/Layout'
-import TasksSection from '@pages/DashboardPage/TasksSection/TasksSection'
+import RescentTask from '@pages/DashboardPage/RescentTask/RescentTask'
 import PinnedSection from './PinnedSection/PinnedSection'
 import styles from './DashboardPage.module.scss'
 
@@ -8,7 +8,7 @@ const DashboardPage: FC = () => {
 	return (
 		<Layout>
 			<div className={styles.container}>
-				<TasksSection />
+				<RescentTask />
 				<PinnedSection />
 			</div>
 		</Layout>
