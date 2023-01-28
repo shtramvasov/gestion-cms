@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import Button from '@components/UI/Button/Button'
+import { Button } from '@components/UI'
 import classnames from 'classnames'
 import styles from './AuthLinks.module.scss'
 

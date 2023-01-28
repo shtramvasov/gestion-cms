@@ -4,7 +4,7 @@ import TaskItem from '@pages/DashboardPage/TaskItem/TaskItem'
 import styles from './PinnedSection.module.scss'
 import TasksManager from '@pages/DashboardPage/TasksManager/TasksManager'
 import { useFetchTasksQuery } from '@store/slices/tasksSlice'
-import Loader from '@components/UI/Loader/Loader'
+import { Loader } from '@components/UI'
 
 const PinnedSection: FC = () => {
 	const { data, isFetching } = useFetchTasksQuery()

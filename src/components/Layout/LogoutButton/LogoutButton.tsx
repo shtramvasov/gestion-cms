@@ -1,7 +1,7 @@
-import Button from '@components/UI/Button/Button'
 import { FC } from 'react'
 import { BiLogIn } from 'react-icons/bi'
 import { RiCopyrightLine } from 'react-icons/ri'
+import { Button } from '@components/UI/'
 import { useAppDispatch } from '@hooks/useTypedReduxHooks'
 import { logout } from '@store/slices/authUserSlice'
 import { useAuth } from '@hooks/useAuth'

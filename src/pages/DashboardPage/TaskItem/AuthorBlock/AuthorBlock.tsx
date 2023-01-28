@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Avatar from '@components/Avatar/Avatar'
-import Loader from '@components/UI/Loader/Loader'
+import { Loader } from '@components/UI'
 import styles from '../TaskItem.module.scss'
 import { IAuthor } from '@interfaces/ITask'
 

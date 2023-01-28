@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import TeamBlock from './TeamBlock/TeamBlock'
 import AuthorBlock from './AuthorBlock/AuthorBlock'
-import Modal from '@components/UI/Modal/Modal'
+import { Modal } from '@components/UI'
 import { ITask } from '@interfaces/ITask'
 import { convertToDate } from '@utils/convertToDate'
 import styles from './TaskItem.module.scss'
