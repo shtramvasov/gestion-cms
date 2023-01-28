@@ -33,7 +33,7 @@ const RescentTask: FC = () => {
 					</Button>
 				)}
 			</div>
-			<Task data={rescent} />
+			<Task data={rescent} pinned={rescent?.isPinned} />
 			<Modal isOpen={openAddTask} onClose={() => setOpenAddTask(false)}>
 				<AddTaskForm close={() => setOpenAddTask(false)} />
 			</Modal>

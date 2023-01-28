@@ -1,0 +1,11 @@
+.author {
+	@apply flex gap-3 items-center lg:pt-12;
+
+	p {
+		@apply text-slate-400 dark:text-stone-400 text-sm;
+
+		span {
+			@apply font-semibold text-gest-accent-blue-400 dark:text-gest-accent-indigo;
+		}
+	}
+}

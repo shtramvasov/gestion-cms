@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Avatar from '@components/Avatar/Avatar'
 import { Loader } from '@components/UI'
 import { IAuthor } from '@interfaces/ITask'
-import styles from '../Task.module.scss'
+import styles from './AuthorBlock.module.scss'
 
 interface IProps {
 	author: IAuthor | undefined

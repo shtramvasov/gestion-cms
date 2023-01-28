@@ -1,0 +1,19 @@
+.team {
+	@apply flex justify-between items-center;
+
+	p {
+		@apply flex h-5/6 items-center font-semibold text-gest-accent-blue-400 dark:text-gest-accent-indigo border-l-2 pl-3 lg:pl-6 border-gray-200 dark:border-gest-slate-600;
+	}
+
+	&.pinned {
+		@apply justify-end flex-row-reverse gap-3 pt-2;
+
+		p {
+			@apply pl-0 border-none;
+		}
+	}
+}
+
+.overlap {
+	@apply border-2 rounded-full border-white dark:border-gest-slate-700;
+}

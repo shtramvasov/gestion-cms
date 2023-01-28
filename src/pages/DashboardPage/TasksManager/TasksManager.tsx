@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import Heading from '@components/Heading/Heading'
 import AddTaskForm from '../AddTaskForm/AddTaskForm'
+import TasksList from '../TasksList/TasksList'
 import { Button, Modal } from '@components/UI'
 import { HiOutlineDotsHorizontal, HiOutlineViewGridAdd } from 'react-icons/hi'
 import { BiLockAlt } from 'react-icons/bi'
@@ -27,9 +28,8 @@ const TasksManager: FC = () => {
 					<BiLockAlt /> Войдите, чтобы добавить задачу
 				</Button>
 			)}
-
 			<Modal isOpen={openTaskList} onClose={() => setOpenTaskList(false)}>
-				<h2>Список задач</h2>
+				<TasksList />
 			</Modal>
 			<Modal isOpen={openAddTask} onClose={() => setOpenAddTask(false)}>
 				<AddTaskForm close={() => setOpenAddTask(false)} />
