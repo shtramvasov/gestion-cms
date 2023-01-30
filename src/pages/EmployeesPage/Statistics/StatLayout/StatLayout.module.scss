@@ -1,0 +1,12 @@
+.container {
+	@apply flex items-center gap-5 p-2.5 rounded-md bg-slate-50 dark:bg-gest-slate-800;
+}
+
+.icon {
+	@apply flex w-14 h-14 items-center justify-center rounded-full text-2xl
+  bg-gest-accent-blue-300/20 text-gest-accent-blue-500 dark:bg-gest-accent-indigo/20 dark:text-gest-accent-indigo;
+
+	&__monochrome {
+		@apply text-gest-slate-800 dark:text-slate-50;
+	}
+}

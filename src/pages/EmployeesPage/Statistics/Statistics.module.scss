@@ -1,0 +1,15 @@
+.container {
+	@apply flex flex-col gap-2.5;
+
+  h2 {
+		@apply text-3xl font-semibold text-gray-800 dark:text-slate-50;
+	}
+
+	p {
+		@apply text-gray-600 dark:text-slate-400;
+	}
+}
+
+.stats {
+	@apply grid grid-cols-2 gap-6;
+}
