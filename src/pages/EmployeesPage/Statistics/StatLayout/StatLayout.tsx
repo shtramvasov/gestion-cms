@@ -15,7 +15,9 @@ const StatLayout: FC<PropsWithChildren<IProps>> = ({
 	return (
 		<div className={styles.container}>
 			<span
-				className={classnames(styles.icon, { [styles.icon__monochrome]: monochrome })}
+				className={classnames(styles.icon, {
+					[styles.icon__monochrome]: monochrome,
+				})}
 			>
 				{icon}
 			</span>
