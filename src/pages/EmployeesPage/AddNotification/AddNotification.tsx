@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { MdOutlineNotificationsActive } from 'react-icons/md'
 import { BiLockAlt } from 'react-icons/bi'
 import StatLayout from '../Statistics/StatLayout/StatLayout'
+import AddNotificationForm from '../AddNotificationForm/AddNotificationForm'
 import { Button, Modal } from '@components/UI'
 import { useAuth } from '@hooks/useAuth'
 import styles from './AddNotification.module.scss'
@@ -26,7 +27,7 @@ const AddNotification: FC = () => {
 					</Link>
 				)}
 				<Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
-					Форма добвления
+					<AddNotificationForm close={() => setOpenModal(false)} />
 				</Modal>
 			</div>
 		</StatLayout>

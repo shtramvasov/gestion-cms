@@ -1,6 +1,6 @@
 import { firebaseApi } from '@store/api/firebaseApi'
 import { database } from '@store/api/firebase'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, addDoc } from 'firebase/firestore'
 import { INotification } from '@interfaces/INotification'
 import { randomIndex } from '@utils/randomIndex'
 
@@ -24,7 +24,21 @@ export const notificationsApi = firebaseApi.injectEndpoints({
 			},
 			providesTags: ['Notifications'],
 		}),
+		addNotification: builder.mutation<null, INotification>({
+			async queryFn(data) {
+				try {
+					await addDoc(notificationsdb, {
+						title: data.title,
+						description: data.description,
+					})
+				} catch (error: any) {
+					return error.message
+				}
+			},
+			invalidatesTags: ['Notifications'],
+		}),
 	}),
 })
 
-export const { useFetchRandomNotificationQuery } = notificationsApi
+export const { useFetchRandomNotificationQuery, useAddNotificationMutation } =
+	notificationsApi
