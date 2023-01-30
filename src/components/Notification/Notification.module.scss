@@ -1,0 +1,20 @@
+.container {
+	@apply flex flex-col relative p-4 border rounded-md
+  border-gest-accent-blue-400 bg-gest-accent-blue-300/20 dark:border-gest-accent-indigo dark:bg-gest-accent-indigo/20;
+
+	h4 {
+		@apply text-lg font-semibold text-gray-800 dark:text-slate-50;
+	}
+
+	p {
+		@apply text-gray-600 dark:text-gray-300;
+	}
+
+	.close {
+		@apply absolute cursor-pointer text-xl right-5 top-4 transition text-gray-800 dark:text-slate-50;
+
+		&:hover {
+			@apply text-gest-accent-blue-400 dark:text-gest-accent-indigo;
+		}
+	}
+}

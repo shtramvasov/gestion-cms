@@ -8,7 +8,7 @@ const notificationsdb = collection(database, 'notifications')
 
 export const notificationsApi = firebaseApi.injectEndpoints({
 	endpoints: builder => ({
-		fetchRandomNotification: builder.query<INotification[], void>({
+		fetchRandomNotification: builder.query<INotification, void>({
 			async queryFn() {
 				try {
 					const querySnapshot = await getDocs(notificationsdb)
@@ -17,7 +17,7 @@ export const notificationsApi = firebaseApi.injectEndpoints({
 						notifications.push({ uid: doc.id, ...doc.data() } as INotification)
 					})
 					const index = randomIndex(notifications)
-					return { data:  notifications[index]}
+					return { data: notifications[index] }
 				} catch (error: any) {
 					return error.message
 				}
