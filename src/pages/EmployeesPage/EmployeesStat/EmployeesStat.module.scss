@@ -1,0 +1,11 @@
+.stat {
+	@apply grid grid-cols-2 gap-1.5 md:gap-4;
+
+	li {
+		@apply text-slate-600 dark:text-gray-400;
+	}
+
+	span {
+		@apply text-2xl text-blue-500 dark:text-slate-50;
+	}
+}
