@@ -2,6 +2,8 @@
 	/* eslint-disable react/jsx-key */
 }
 import { FC, useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import Avatar from '@components/Avatar/Avatar'
 import { useTable, TableOptions } from 'react-table'
 import { useFetchUsersQuery } from '@store/slices/usersSlice'
 import { IUser } from '@interfaces/IUser'
@@ -22,6 +24,14 @@ const EmployeesTable: FC = () => {
 			{
 				Header: 'Имя сотрдника',
 				accessor: 'name',
+				Cell: row => (
+					<div className={styles.avatarcell}>
+						<Avatar uid={row.row.original.uid} size='sm' />
+						<Link to={`/employees/${row.row.original.uid}`}>
+							<span>{row.value}</span>
+						</Link>
+					</div>
+				),
 			},
 			{
 				Header: 'Должность',
@@ -59,12 +69,14 @@ const EmployeesTable: FC = () => {
 					{rows.map((row, index) => {
 						prepareRow(row)
 						return (
-							<tr
-								{...row.getRowProps()}
-								className={classnames({ [styles.stripped]: !isEven(index) })}
-							>
+							<tr {...row.getRowProps()}>
 								{row.cells.map(cell => (
-									<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+									<td
+										{...cell.getCellProps()}
+										className={classnames({ [styles.stripped]: isEven(index) })}
+									>
+										{cell.render('Cell')}
+									</td>
 								))}
 							</tr>
 						)
