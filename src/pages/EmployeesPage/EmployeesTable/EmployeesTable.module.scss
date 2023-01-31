@@ -1,7 +1,7 @@
 .container {
 	scrollbar-width: thin;
 	scrollbar-color: #334155;
-	@apply overflow-x-auto;
+	@apply overflow-x-auto pt-2;
 
 	&::-webkit-scrollbar {
 		@apply h-[5px];
