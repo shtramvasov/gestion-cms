@@ -4,7 +4,8 @@
 import { FC, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Avatar from '@components/Avatar/Avatar'
-import { useTable, TableOptions } from 'react-table'
+import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md'
+import { useTable, TableOptions, useSortBy } from 'react-table'
 import { useFetchUsersQuery } from '@store/slices/usersSlice'
 import { IUser } from '@interfaces/IUser'
 import { convertToDate } from '@utils/convertToDate'
@@ -63,7 +64,7 @@ const EmployeesTable: FC = () => {
 	)
 
 	const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-		useTable({ columns, data: employees })
+		useTable({ columns, data: employees }, useSortBy)
 
 	return (
 		<div className={styles.container}>
@@ -72,7 +73,18 @@ const EmployeesTable: FC = () => {
 					{headerGroups.map(headerGroup => (
 						<tr {...headerGroup.getHeaderGroupProps()}>
 							{headerGroup.headers.map(column => (
-								<th {...column.getHeaderProps()}>{column.render('Header')}</th>
+								<th {...column.getHeaderProps(column.getSortByToggleProps())}>
+									{column.render('Header')}
+									{column.isSorted ? (
+										column.isSortedDesc ? (
+											<MdOutlineArrowDropDown />
+										) : (
+											<MdOutlineArrowDropUp />
+										)
+									) : (
+										''
+									)}
+								</th>
 							))}
 						</tr>
 					))}

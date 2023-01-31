@@ -28,6 +28,10 @@
 
 	th {
 		@apply py-3 lg:py-5;
+
+    > svg {
+      @apply inline text-lg lg:text-2xl
+    }
 	}
 
 	td {
