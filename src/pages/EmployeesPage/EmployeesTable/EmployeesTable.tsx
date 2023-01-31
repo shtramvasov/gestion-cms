@@ -22,11 +22,15 @@ const EmployeesTable: FC = () => {
 	const columns = useMemo<TableOptions<IUser>['columns']>(
 		() => [
 			{
-				Header: 'Имя сотрдника',
+				Header: 'Имя сотрудника',
 				accessor: 'name',
 				Cell: row => (
 					<div className={styles.avatarcell}>
-						<Avatar uid={row.row.original.uid} size='sm' className='hidden lg:flex' />
+						<Avatar
+							uid={row.row.original.uid}
+							size='sm'
+							className='hidden lg:flex'
+						/>
 						<Link to={`/employees/${row.row.original.uid}`}>
 							<span>{row.value}</span>
 						</Link>
@@ -50,7 +54,7 @@ const EmployeesTable: FC = () => {
 				accessor: 'email',
 			},
 			{
-				Header: 'Принят на работу',
+				Header: 'Работает с',
 				accessor: 'createdAt',
 				Cell: row => <p>{convertToDate(row.value)}</p>,
 			},

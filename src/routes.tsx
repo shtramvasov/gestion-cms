@@ -1,10 +1,11 @@
 import DashboardPage from '@pages/DashboardPage/DashboardPage'
 import EmployeesPage from '@pages/EmployeesPage/EmployeesPage'
+import UserPage from '@pages/UserPage/UserPage'
 import ChatPage from '@pages/ChatPage/ChatPage'
 import SettingsPage from '@pages/SettingsPage/SettingsPage'
 import SignInPage from '@pages/SignInPage/SignInPage'
 import SignUpPage from '@pages/SignUpPage/SignUpPage'
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, redirect } from 'react-router-dom'
 
 export const router = createBrowserRouter([
 	{
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
 	{
 		path: '/employees',
 		element: <EmployeesPage />,
+	},
+	{
+		path: '/employees/:id',
+		element: <UserPage />,
 	},
 	{
 		path: '/chat',
@@ -30,5 +35,10 @@ export const router = createBrowserRouter([
 	{
 		path: '/signup',
 		element: <SignUpPage />,
+	},
+	{
+		path: '/*',
+		element: <DashboardPage />,
+		loader: () => redirect('/'),
 	},
 ])
