@@ -26,7 +26,7 @@ const EmployeesTable: FC = () => {
 				accessor: 'name',
 				Cell: row => (
 					<div className={styles.avatarcell}>
-						<Avatar uid={row.row.original.uid} size='sm' />
+						<Avatar uid={row.row.original.uid} size='sm' className='hidden lg:flex' />
 						<Link to={`/employees/${row.row.original.uid}`}>
 							<span>{row.value}</span>
 						</Link>
@@ -36,6 +36,14 @@ const EmployeesTable: FC = () => {
 			{
 				Header: 'Должность',
 				accessor: 'position',
+				Cell: row => (
+					<p className={styles.badge}>
+						{row.value === 'Дизайнер' && `🎨 ${row.value}`}
+						{row.value === 'Менеджер' && `📧 ${row.value}`}
+						{row.value === 'Разработчик' && `🖱️ ${row.value}`}
+						{row.value === 'Тестировщик' && `🧪 ${row.value}`}
+					</p>
+				),
 			},
 			{
 				Header: 'Рабочая почта',

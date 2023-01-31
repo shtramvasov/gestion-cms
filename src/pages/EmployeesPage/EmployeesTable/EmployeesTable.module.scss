@@ -1,6 +1,21 @@
 .container {
+	scrollbar-width: thin;
+	scrollbar-color: #334155;
+	@apply overflow-x-auto;
+
+	&::-webkit-scrollbar {
+		@apply h-[5px];
+	}
+
+	&::-webkit-scrollbar-track {
+		@apply bg-slate-300 dark:bg-gest-slate-700;
+	}
+	&::-webkit-scrollbar-thumb {
+		@apply bg-slate-400 dark:bg-gest-slate-500 border rounded-[20px];
+	}
+
 	table {
-		@apply w-full rounded-md text-left
+		@apply w-full rounded-md text-left text-sm xl:text-base
      text-gray-600 dark:text-slate-200;
 	}
 
@@ -12,11 +27,11 @@
 	}
 
 	th {
-		@apply py-5;
+		@apply py-3 lg:py-5;
 	}
 
 	td {
-		@apply py-5 bg-slate-200 dark:bg-gest-slate-800/80;
+		@apply py-2 bg-slate-200 dark:bg-gest-slate-800/80;
 	}
 
 	th,
@@ -39,4 +54,8 @@
 			@apply text-gest-accent-blue-400/60 dark:text-gest-accent-indigo/70 no-underline;
 		}
 	}
+}
+
+.badge {
+	@apply inline-block p-1 xl:py-1.5 xl:px-3 rounded-md bg-slate-300/75 dark:bg-gest-accent-indigo/20;
 }
