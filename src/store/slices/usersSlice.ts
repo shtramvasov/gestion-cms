@@ -1,6 +1,6 @@
 import { firebaseApi } from '@store/api/firebaseApi'
 import { database } from '@store/api/firebase'
-import { collection, doc, getDocs, getDoc, setDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, getDoc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { IUser } from '@interfaces/IUser'
 
 const usersdb = collection(database, 'users')
@@ -46,6 +46,7 @@ export const usersApi = firebaseApi.injectEndpoints({
 						uid: data.uid,
 						position: data.position,
 						photoUrl: data.photoUrl,
+						createdAt: serverTimestamp(),
 					})
 					return { data: null }
 				} catch (error: any) {

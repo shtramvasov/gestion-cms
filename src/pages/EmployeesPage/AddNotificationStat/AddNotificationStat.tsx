@@ -6,9 +6,9 @@ import StatLayout from '../Statistics/StatLayout/StatLayout'
 import AddNotificationForm from '../AddNotificationForm/AddNotificationForm'
 import { Button, Modal } from '@components/UI'
 import { useAuth } from '@hooks/useAuth'
-import styles from './AddNotification.module.scss'
+import styles from './AddNotificationStat.module.scss'
 
-const AddNotification: FC = () => {
+const AddNotificationStat: FC = () => {
 	const { isAuth } = useAuth()
 	const [openModal, setOpenModal] = useState(false)
 	return (
@@ -34,4 +34,4 @@ const AddNotification: FC = () => {
 	)
 }
 
-export default AddNotification
+export default AddNotificationStat

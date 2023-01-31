@@ -4,4 +4,5 @@ export interface IUser {
 	name: string
 	position: 'Менеджер' | 'Разработчик' | 'Дизайнер' | 'Тестировщик'
 	photoUrl: string
+	createdAt: any
 }

@@ -3,7 +3,7 @@
 }
 
 .wrapper {
-	@apply flex flex-wrap md:ml-80 py-8 px-12 w-full bg-slate-200 dark:bg-gest-slate-700;
+	@apply flex flex-wrap md:ml-80 py-8 px-12 w-full bg-slate-200 dark:bg-gest-slate-700 min-h-screen;
 
   h1 {
     @apply h-1/2 w-1/4

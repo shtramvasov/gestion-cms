@@ -22,6 +22,7 @@
 		"react-redux": "^8.0.5",
 		"react-router-dom": "^6.6.1",
 		"react-select": "^5.7.0",
+		"react-table": "^7.8.0",
 		"react-toastify": "^9.1.1",
 		"redux-persist": "^6.0.0",
 		"sass": "^1.57.1"
@@ -32,6 +33,7 @@
 		"@types/react": "^18.0.26",
 		"@types/react-dom": "^18.0.9",
 		"@types/react-redux": "^7.1.24",
+		"@types/react-table": "^7.7.14",
 		"@typescript-eslint/eslint-plugin": "^5.47.0",
 		"@typescript-eslint/parser": "^5.47.0",
 		"@vitejs/plugin-react": "^3.0.0",
