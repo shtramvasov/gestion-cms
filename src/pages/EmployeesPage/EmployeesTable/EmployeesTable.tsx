@@ -1,17 +1,16 @@
 {
 	/* eslint-disable react/jsx-key */
 }
-import { FC, useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
-import Avatar from '@components/Avatar/Avatar'
+import { FC, useEffect, useState } from 'react'
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md'
-import { useTable, TableOptions, useSortBy } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
 import { useFetchUsersQuery } from '@store/slices/usersSlice'
 import { IUser } from '@interfaces/IUser'
-import { convertToDate } from '@utils/convertToDate'
 import { isEven } from '@utils/isEven'
 import classnames from 'classnames'
 import styles from './EmployeesTable.module.scss'
+
+import { columns } from './columns.data'
 
 const EmployeesTable: FC = () => {
 	const { data: users, isSuccess } = useFetchUsersQuery()
@@ -19,49 +18,6 @@ const EmployeesTable: FC = () => {
 	useEffect(() => {
 		isSuccess && setEmployees(users)
 	})
-
-	const columns = useMemo<TableOptions<IUser>['columns']>(
-		() => [
-			{
-				Header: 'Имя сотрудника',
-				accessor: 'name',
-				Cell: row => (
-					<div className={styles.avatarcell}>
-						<Avatar
-							uid={row.row.original.uid}
-							size='sm'
-							className='hidden lg:flex'
-						/>
-						<Link to={`/employees/${row.row.original.uid}`}>
-							<span>{row.value}</span>
-						</Link>
-					</div>
-				),
-			},
-			{
-				Header: 'Должность',
-				accessor: 'position',
-				Cell: row => (
-					<p className={styles.badge}>
-						{row.value === 'Дизайнер' && `🎨 ${row.value}`}
-						{row.value === 'Менеджер' && `📧 ${row.value}`}
-						{row.value === 'Разработчик' && `🖱️ ${row.value}`}
-						{row.value === 'Тестировщик' && `🧪 ${row.value}`}
-					</p>
-				),
-			},
-			{
-				Header: 'Рабочая почта',
-				accessor: 'email',
-			},
-			{
-				Header: 'Работает с',
-				accessor: 'createdAt',
-				Cell: row => <p>{convertToDate(row.value)}</p>,
-			},
-		],
-		[],
-	)
 
 	const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
 		useTable({ columns, data: employees }, useSortBy)
