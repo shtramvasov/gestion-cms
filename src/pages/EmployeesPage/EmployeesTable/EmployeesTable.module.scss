@@ -1,0 +1,28 @@
+.container {
+	table {
+		@apply w-full rounded-md text-left
+     text-gray-800 dark:text-slate-50;
+	}
+
+	thead {
+		@apply border-b-2
+   border-slate-200 dark:border-gest-slate-600 bg-slate-50 dark:bg-gest-slate-800 text-gest-accent-blue-400 dark:text-gest-accent-indigo;
+	}
+
+	th {
+		@apply py-5;
+	}
+
+	td {
+		@apply py-5;
+	}
+
+	th,
+	td {
+		@apply pl-4 border-b border-slate-200 dark:border-gest-slate-600;
+	}
+
+  .stripped {
+    @apply bg-emerald-200
+  }
+}

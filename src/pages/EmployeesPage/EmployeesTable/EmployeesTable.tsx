@@ -6,6 +6,8 @@ import { useTable, TableOptions } from 'react-table'
 import { useFetchUsersQuery } from '@store/slices/usersSlice'
 import { IUser } from '@interfaces/IUser'
 import { convertToDate } from '@utils/convertToDate'
+import { isEven } from '@utils/isEven'
+import classnames from 'classnames'
 import styles from './EmployeesTable.module.scss'
 
 const EmployeesTable: FC = () => {
@@ -54,10 +56,13 @@ const EmployeesTable: FC = () => {
 					))}
 				</thead>
 				<tbody {...getTableBodyProps()}>
-					{rows.map(row => {
+					{rows.map((row, index) => {
 						prepareRow(row)
 						return (
-							<tr {...row.getRowProps()}>
+							<tr
+								{...row.getRowProps()}
+								className={classnames({ [styles.stripped]: !isEven(index) })}
+							>
 								{row.cells.map(cell => (
 									<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
 								))}
