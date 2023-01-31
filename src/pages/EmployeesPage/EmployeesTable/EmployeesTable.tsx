@@ -34,7 +34,7 @@ const EmployeesTable: FC = () => {
 	return (
 		<div className={styles.container}>
 			<Heading text='Искать сотрудников' />
-			<Search search={globalFilter} onChange={setGlobalFilter} />
+			<Search search={globalFilter} setSearch={setGlobalFilter} />
 			<table {...getTableProps()}>
 				<thead>
 					{headerGroups.map(headerGroup => (
