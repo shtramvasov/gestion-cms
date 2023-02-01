@@ -7,7 +7,6 @@ import { convertToDate } from '@utils/convertToDate'
 import classnames from 'classnames'
 import styles from './Task.module.scss'
 
-
 interface IProps {
 	pinned?: boolean
 	data: ITask | undefined
