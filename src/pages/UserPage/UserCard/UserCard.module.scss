@@ -1,0 +1,32 @@
+.avatar {
+	@apply flex justify-center gap-2 md:gap-5 mt-3 p-4 mx-4 md:mx-0 xl:py-6 xl:px-10 rounded-lg border 
+  border-slate-200 dark:border-transparent
+  bg-slate-100 dark:bg-gest-slate-800 md:bg-slate-50 md:dark:bg-gest-slate-700;
+
+	.position {
+		@apply pb-3 lg:pb-12;
+	}
+
+	h2 {
+		@apply text-lg md:text-2xl xl:text-3xl font-semibold pt-3 text-gray-800 dark:text-slate-50;
+	}
+}
+
+.details {
+	@apply flex flex-col text-gray-500 dark:text-stone-400;
+
+	.email {
+		span {
+			@apply cursor-pointer pt-2 underline underline-offset-8 hover:no-underline transition;
+
+			&:hover {
+				@apply text-gest-accent-blue-300 dark:text-gest-accent-indigo/30;
+			}
+		}
+	}
+}
+
+.position,
+.email > span {
+	@apply text-gest-accent-blue-400 dark:text-gest-accent-indigo;
+}

@@ -5,7 +5,7 @@ import styles from './Search.module.scss'
 
 interface IProps {
 	search: string
-	setSearch: (e) => void
+	setSearch: (e: any) => void
 }
 
 const Search: FC<IProps> = ({ search, setSearch }) => {
