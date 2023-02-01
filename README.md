@@ -30,39 +30,39 @@ Live version deployed on Vercel — [Gestion](https://gestion-cms.vercel.app/)
 
 This employees management system has been built using React and TypeScript, with the following features:
 
-### State Management
+### 🧰 State Management 
 
 - Utilizes <ins>**Redux Toolkit**</ins> for efficient state management and <ins>**redux-persist**</ins> for persist state to local storage
 
-### Firebase Integration
+### 🔥 Firebase Integration 
 
 - Incorporates <ins>**Firebase**</ins> for user authentication and for real-time data storage connected to frontend with <ins>**RTK Query**</ins> injections
 
-### Linting and Formatting
+### 🧾 Linting and Formatting 
 
 - Follows coding style guide with <ins>**Firebase**</ins> and <ins>**Prettier**</ins>
 
-### Styling
+### 🍞 Form Validations
 
-- IMakes use of <ins>**React Hook Form**</ins> for form handling and <ins>**React Toastif**</ins> for notifications
+- Makes use of <ins>**React Hook Form**</ins> for form handling and <ins>**React Toastif**</ins> for notifications
 
-### Firebase Integration
+### 🎨 Styling
 
 - Styled using <ins>**TailwindCSS**</ins> with <ins>**SCSS modules**</ins>
 
-### Date Formatting
+### ⏰ Date Formatting
 
 - Manages dates with <ins>**Day.js**</ins>
 
-### Table Management
+### 🎛️ Table Management
 
 - Renders tables with <ins>**React Table**</ins> and includes sorting and global search filtering capabilities
 
-### Real-time Chat
+### 💬 Real-time Chat
 
 - This added feature further improves collaboration and communication within the application, making it an even more powerful tool for managing employee information.
 
-### Additional Utilities
+### 🌟 Additional Utilities
 
 - Includes <code>@aliases</code> for improved code navigation
 - Utilizes various <code>utility</code> functions for easier development
@@ -249,6 +249,9 @@ In this repository, you will find a set of React components, hooks and utilities
 
 I hope you find these helpful and you can use them in your projects. Don't forget to customize them to your specific needs and feel free to ask any questions.
 
+
 <p align="center">
 <img src='/src/assets/images/logo.svg' width='250'/>
 </p>
+
+
