@@ -1,0 +1,11 @@
+.buttons {
+	@apply flex flex-col md:flex-row mx-4 gap-3 justify-center mt-4 md:mt-10;
+
+}
+
+.warning {
+	@apply flex flex-col gap-8 py-12;
+	h2 {
+		@apply flex flex-col text-2xl font-semibold text-gray-800 dark:text-slate-50;
+	}
+}

@@ -4,7 +4,7 @@
 }
 
 .return {
-	@apply flex items-center gap-1 mt-8 mb-10 lg:mb-20 transition;
+	@apply flex items-center gap-1 mt-8 mb-10 lg:mb-20 transition text-gray-800 dark:text-slate-50;
 
 	p {
 		@apply md:text-xl;
@@ -13,12 +13,4 @@
 	&:hover {
 		@apply text-gray-500 dark:text-slate-300;
 	}
-}
-
-.return {
-	@apply text-gray-800 dark:text-slate-50;
-}
-
-.buttons {
-	@apply flex flex-col md:flex-row mx-4 gap-3 justify-center mt-4 md:mt-10;
 }

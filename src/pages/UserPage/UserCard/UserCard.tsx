@@ -5,10 +5,10 @@ import { IUser } from '@interfaces/IUser'
 import styles from './UserCard.module.scss'
 
 interface IUserProps {
-  user: IUser | undefined
+	user: IUser | undefined
 }
 
-const UserCard: FC<IUserProps> = ({user}) => {
+const UserCard: FC<IUserProps> = ({ user }) => {
 	return (
 		<div className={styles.avatar}>
 			<Avatar uid={user?.uid} size='lg' />
