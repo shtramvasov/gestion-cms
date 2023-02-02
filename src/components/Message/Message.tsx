@@ -4,6 +4,7 @@ import { IMessage } from '@interfaces/IMessage'
 import { useAuth } from '@hooks/useAuth'
 import classnames from 'classnames'
 import styles from './Message.module.scss'
+import { convertToDate } from '@utils/convertToDate'
 
 interface IProps {
 	message: IMessage
@@ -14,12 +15,15 @@ const Message: FC<IProps> = ({ message }) => {
 	return (
 		<div
 			className={classnames(styles.container, {
-				[styles.mymessage]: id === message.author.uid,
+				[styles.mymessage]: id === message.userid,
 			})}
 		>
-			<Avatar uid={message.author.uid} size='sm' />
+			<Avatar uid={message.userid} size='sm' />
 			<div className={styles.text}>
-				<span>{message.author.name}</span>
+				<div className={styles.details}>
+					<span>{message.author}</span>
+					<p className={styles.date}>{convertToDate(message.createdAt)}</p>
+				</div>
 				<p>{message.text}</p>
 			</div>
 		</div>

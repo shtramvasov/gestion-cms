@@ -31,6 +31,7 @@ export const notificationsApi = firebaseApi.injectEndpoints({
 						title: data.title,
 						description: data.description,
 					})
+					return { data: null }
 				} catch (error: any) {
 					return error.message
 				}

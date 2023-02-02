@@ -10,7 +10,7 @@ import { IMessage } from '@interfaces/IMessage'
 
 const messagesdb = collection(database, 'messages')
 
-export const notificationsApi = firebaseApi.injectEndpoints({
+export const messagesApi = firebaseApi.injectEndpoints({
 	endpoints: builder => ({
 		fetchMessages: builder.query<IMessage[], void>({
 			async queryFn() {
@@ -36,9 +36,11 @@ export const notificationsApi = firebaseApi.injectEndpoints({
 				try {
 					await addDoc(messagesdb, {
 						text: data.text,
-						author: {name: data.author.name, uid: data.author.uid},
+						author: data.author,
+						userid: data.userid,
 						createdAt: serverTimestamp(),
 					})
+					return { data: null }
 				} catch (error: any) {
 					return error.message
 				}
@@ -48,5 +50,4 @@ export const notificationsApi = firebaseApi.injectEndpoints({
 	}),
 })
 
-export const { useFetchMessagesQuery, useAddMessageMutation } =
-	notificationsApi
+export const { useFetchMessagesQuery, useAddMessageMutation } = messagesApi

@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import ChatFooter from '../ChatFooter/ChatFooter'
 import Message from '@components/Message/Message'
 import { useFetchMessagesQuery } from '@store/slices/messagesSlice'
 import styles from './ChatWindow.module.scss'
@@ -10,6 +11,7 @@ const ChatWindow: FC = () => {
 			{messages?.map(message => (
 				<Message key={message.uid} message={message} />
 			))}
+			<ChatFooter />
 		</div>
 	)
 }

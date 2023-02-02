@@ -1,0 +1,16 @@
+.footer {
+	@apply relative flex items-center justify-between gap-1 md:gap-2 z-10;
+
+	.submit {
+		@apply flex items-center mb-1 md:mb-4 md:h-11 rounded-md;
+	}
+
+	.icon {
+		@apply rotate-90 text-lg;
+	}
+
+  .block {
+    @apply absolute flex top-0 left-0 w-full z-50 h-10 md:h-12 rounded-sm text-xl items-center justify-center
+    bg-slate-200/75 dark:bg-gest-slate-600/75 text-gest-accent-rose-300
+  }
+}

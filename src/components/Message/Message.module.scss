@@ -6,6 +6,10 @@
 	@apply self-end;
 }
 
+.details {
+  @apply flex justify-between items-center
+}
+
 .text {
 	@apply flex flex-col gap-1 xl:gap-2.5 py-1.5 px-2 xl:px-4 rounded-md max-w-xs 
  bg-slate-200 dark:bg-gest-slate-600 text-gray-700 dark:text-slate-100;
@@ -13,4 +17,8 @@
 	span {
 		@apply font-semibold text-gest-accent-blue-400 dark:text-gest-accent-indigo;
 	}
+}
+
+.date {
+	@apply text-sm text-gray-400 dark:text-stone-500;
 }
