@@ -1,10 +1,10 @@
-ul {
+.container {
 	scrollbar-width: thin;
 	scrollbar-color: #334155;
-	@apply flex flex-col gap-4 text-gray-800 dark:text-slate-50 overflow-y-scroll overflow-x-hidden text-sm md:text-base;
+	@apply hidden lg:flex flex-col gap-2 xl:gap-4 text-gray-800 dark:text-slate-50 overflow-y-scroll text-sm xl:text-base;
 
 	&::-webkit-scrollbar {
-		@apply w-[5px];
+		@apply w-[5px] ;
 	}
 
 	&::-webkit-scrollbar-track {
@@ -15,7 +15,7 @@ ul {
 	}
 
 	li {
-		@apply flex w-full mr-24 gap-3.5 items-center pb-3 border-b-2 border-slate-300 dark:border-gest-slate-600 last:border-none;
+		@apply flex mr-2 2xl:mr-10 gap-3.5 items-center pb-3 border-b-2 border-slate-300 dark:border-gest-slate-600 last:border-none;
 	}
 }
 

@@ -1,6 +1,11 @@
+interface IAuthor {
+  name: string
+  uid: string
+}
+
 export interface IMessage {
 	uid: string
 	text: string
-	author: string
+	author: IAuthor
 	createdAt: any
 }

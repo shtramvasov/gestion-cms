@@ -1,5 +1,5 @@
 .container {
-	@apply flex justify-between md:flex-col items-center gap-1.5 ;
+	@apply flex justify-between md:flex-col items-center gap-1.5;
 
 	&.sidebar {
 		@apply order-3 md:order-2 md:py-1 2xl:py-10;

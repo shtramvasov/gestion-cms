@@ -17,7 +17,7 @@ const EmployeesStat: FC = () => {
 	}
 	return (
 		<StatLayout icon={<BiRocket />}>
-			<div className={styles.container}>
+			<div className={styles.wrapper}>
 				<ul className={styles.stat}>
 					<li>
 						<span>{data.managers}</span> Менеджеров

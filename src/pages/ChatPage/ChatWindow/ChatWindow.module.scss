@@ -1,7 +1,7 @@
-.wrapper {
+.chat {
 	scrollbar-width: thin;
 	scrollbar-color: #334155;
-	@apply grid lg:grid-cols-4 p-2 lg:p-6 rounded-md bg-slate-50 dark:bg-gest-slate-800 h-[46rem] overflow-x-scroll;
+	@apply flex flex-col lg:col-span-3 w-full py-5 px-2.5 lg:px-4 xl:px-10 gap-5 overflow-y-scroll min-w-[25rem];
 
 	&::-webkit-scrollbar {
 		@apply w-[5px] h-[5px];

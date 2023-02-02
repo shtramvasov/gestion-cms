@@ -12,7 +12,7 @@ const messagesdb = collection(database, 'messages')
 
 export const notificationsApi = firebaseApi.injectEndpoints({
 	endpoints: builder => ({
-		fetchMessages: builder.query<IMessage, void>({
+		fetchMessages: builder.query<IMessage[], void>({
 			async queryFn() {
 				try {
 					const querySnapshot = await getDocs(messagesdb)
@@ -20,7 +20,11 @@ export const notificationsApi = firebaseApi.injectEndpoints({
 					querySnapshot?.forEach(doc => {
 						messages.push({ uid: doc.id, ...doc.data() } as IMessage)
 					})
-					return { data: messages }
+					return {
+						data: messages.sort((a, b) =>
+							a.createdAt.toString().localeCompare(b.createdAt.toString()),
+						),
+					}
 				} catch (error: any) {
 					return error.message
 				}
@@ -32,7 +36,7 @@ export const notificationsApi = firebaseApi.injectEndpoints({
 				try {
 					await addDoc(messagesdb, {
 						text: data.text,
-						author: data.author,
+						author: {name: data.author.name, uid: data.author.uid},
 						createdAt: serverTimestamp(),
 					})
 				} catch (error: any) {
