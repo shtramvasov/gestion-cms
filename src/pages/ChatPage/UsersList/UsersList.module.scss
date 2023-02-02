@@ -1,0 +1,34 @@
+ul {
+	scrollbar-width: thin;
+	scrollbar-color: #334155;
+	@apply flex flex-col gap-4 text-gray-800 dark:text-slate-50 overflow-y-scroll overflow-x-hidden text-sm md:text-base;
+
+	&::-webkit-scrollbar {
+		@apply w-[5px];
+	}
+
+	&::-webkit-scrollbar-track {
+		@apply bg-slate-300 dark:bg-gest-slate-700;
+	}
+	&::-webkit-scrollbar-thumb {
+		@apply bg-slate-400 dark:bg-gest-slate-500 border rounded-[20px];
+	}
+
+	li {
+		@apply flex w-full mr-24 gap-3.5 items-center pb-3 border-b-2 border-slate-300 dark:border-gest-slate-600 last:border-none;
+	}
+}
+
+.details {
+	p {
+		@apply leading-3;
+	}
+
+	span {
+		@apply text-gest-accent-blue-400 dark:text-gest-accent-indigo;
+	}
+}
+
+.avatar {
+	@apply hidden md:flex;
+}
