@@ -1,12 +1,16 @@
 .container {
-@apply flex gap-2 xl:gap-4 text-sm xl:text-base
+	@apply flex gap-2 xl:gap-4 text-sm xl:text-base;
+}
+
+.mymessage {
+	@apply self-end;
 }
 
 .text {
- @apply flex flex-col gap-1 xl:gap-2.5 py-1.5 px-2 xl:px-4 rounded-md max-w-xs 
+	@apply flex flex-col gap-1 xl:gap-2.5 py-1.5 px-2 xl:px-4 rounded-md max-w-xs 
  bg-slate-200 dark:bg-gest-slate-600 text-gray-700 dark:text-slate-100;
 
- span {
-  @apply font-semibold text-gest-accent-blue-400 dark:text-gest-accent-indigo
- }
+	span {
+		@apply font-semibold text-gest-accent-blue-400 dark:text-gest-accent-indigo;
+	}
 }
