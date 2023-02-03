@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface IInitialState {
 	theme: 'dark' | 'light'
 	notifications: boolean
+	dateformat: 'D MMMM YYYY' | 'D.MM.YYYY'
 }
 
 const initialState: IInitialState = {
 	theme: 'dark',
 	notifications: true,
+	dateformat: 'D MMMM YYYY',
 }
 
 const settingsSlice = createSlice({
@@ -23,9 +25,15 @@ const settingsSlice = createSlice({
 		) => {
 			state.notifications = action.payload.notifications
 		},
+		setFormat: (
+			state,
+			action: PayloadAction<{ dateformat: 'D MMMM YYYY' | 'D.MM.YYYY' }>,
+		) => {
+			state.dateformat = action.payload.dateformat
+		},
 	},
 })
 
-export const { setTheme, setNotifications } = settingsSlice.actions
+export const { setTheme, setNotifications, setFormat } = settingsSlice.actions
 
 export default settingsSlice.reducer
