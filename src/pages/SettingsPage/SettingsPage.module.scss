@@ -1,0 +1,7 @@
+.container {
+	@apply flex flex-col gap-12 pt-6 text-slate-800 dark:text-slate-50;
+
+	h2 {
+		@apply text-2xl;
+	}
+}

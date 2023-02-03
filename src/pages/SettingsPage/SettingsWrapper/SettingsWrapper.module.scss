@@ -1,0 +1,11 @@
+.wrapper {
+	@apply flex flex-col gap-4;
+
+	h3 {
+		@apply text-xl;
+	}
+}
+
+.container {
+  @apply flex items-center gap-6
+}

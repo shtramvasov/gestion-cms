@@ -1,0 +1,15 @@
+.setting {
+	@apply flex flex-col gap-1 font-light;
+
+	&__active {
+		@apply text-gest-accent-blue-400 dark:text-gest-accent-indigo;
+
+		img {
+			@apply border-2 border-gest-accent-blue-400 dark:border-gest-accent-indigo;
+		}
+	}
+
+	.image {
+		@apply cursor-pointer object-contain h-28 w-36 rounded-md;
+	}
+}
